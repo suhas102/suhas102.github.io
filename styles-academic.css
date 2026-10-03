@@ -1,0 +1,32 @@
+/* Minimal academic style, modelled on harshini-suresha.github.io */
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  background:#fff;
+  color:#111;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  font-size:16px;
+  line-height:1.6;
+}
+.page{max-width:780px;margin:0 auto;padding:24px 20px 60px}
+.topnav{display:flex;gap:22px;justify-content:flex-start;flex-wrap:wrap;padding:6px 0 14px;font-size:15px}
+.topnav a{color:#111;text-decoration:none}
+.topnav a:hover{text-decoration:underline}
+.site-header{text-align:center;padding:18px 0 6px}
+.site-header h1{font-size:2rem;font-weight:700;margin:0 0 6px;letter-spacing:-.01em}
+.tagline{margin:0 0 8px;color:#222}
+.contact-line{margin:0;color:#222;font-size:.95rem}
+a{color:#1a5fb4}
+a:hover{color:#0b3d91}
+main section{margin:26px 0}
+h2{font-size:1.25rem;margin:28px 0 10px;padding-bottom:4px;border-bottom:1px solid #e5e5e5}
+p{margin:10px 0}
+ul{margin:8px 0 12px;padding-left:22px}
+li{margin:5px 0}
+.meta{color:#555;font-size:.92rem}
+footer{margin-top:36px;padding-top:14px;border-top:1px solid #e5e5e5;text-align:center;color:#333;font-size:.92rem}
+@media(max-width:600px){
+  body{font-size:15px}
+  .site-header h1{font-size:1.6rem}
+}
