@@ -177,3 +177,54 @@ h1, h2, h3 { font-family: var(--font-display); }
 @keyframes dash { to { stroke-dashoffset: -9; } }
 @media (max-width: 1100px) { .ach { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 @media (prefers-reduced-motion: reduce) { .term-caret { animation: none; } .pin:hover .pin-viz * { animation: none !important; } }
+
+/* ---- timeline heatmap ---- */
+.heat-box { padding: 16px; overflow-x: auto; }
+.hgrid { display: flex; gap: 4px; min-width: max-content; }
+.hcol { display: flex; flex-direction: column; gap: 3px; align-items: center; }
+.hc { display: block; width: 12px; height: 12px; border-radius: 2px; background: var(--surface-2); outline: 1px solid rgba(31,35,40,.06); outline-offset: -1px; }
+.hc-x { background: transparent; outline: 0; }
+.hc-1 { background: #9be9a8; } .hc-2 { background: #40c463; } .hc-3 { background: #30a14e; } .hc-4 { background: #216e39; }
+[data-theme="dark"] .hc { outline-color: rgba(240,246,252,.08); }
+[data-theme="dark"] .hc-0 { background: #151b23; } [data-theme="dark"] .hc-1 { background: #0e4429; } [data-theme="dark"] .hc-2 { background: #006d32; } [data-theme="dark"] .hc-3 { background: #26a641; } [data-theme="dark"] .hc-4 { background: #39d353; }
+.hmon { font-size: 10px; color: var(--muted); margin-top: 2px; white-space: nowrap; }
+.hfoot { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; font-size: 12px; color: var(--muted); margin-top: 12px; }
+.hleg { display: inline-flex; align-items: center; gap: 3px; }
+.hnow { font-size: 12px; margin: 8px 0 0; min-height: 1.5em; }
+
+/* ---- run the guardrail ---- */
+.guard { margin-top: 4px; }
+.guard-panel { margin-top: 10px; border-top: 1px solid var(--line); padding-top: 10px; display: grid; gap: 8px; }
+.guard-note { font-size: 12px; color: var(--muted); margin: 0; }
+.guard-note code { font-family: var(--font-code); }
+.guard-chips { margin: 0; }
+.guard-form { margin: 0; }
+.guard-out ul { margin: 4px 0; padding-left: 1.2em; font-size: 12px; }
+.guard-verdict { margin: 0 0 4px; font-weight: 600; padding: 4px 10px; border-radius: 6px; display: inline-block; }
+.guard-verdict[data-s="pass"] { background: var(--pass-soft); color: var(--pass); }
+.guard-verdict[data-s="block"] { background: var(--block-soft); color: var(--block); }
+.guard-verdict[data-s="warn"] { background: var(--warn-soft); color: var(--warn); }
+
+/* ---- case-study pages in the same look ---- */
+.case-wrap { max-width: 1012px; margin: 0 auto; padding: 24px; }
+.case-wrap .crumbs { font-size: 14px; color: var(--muted); margin-bottom: 16px; }
+.case-wrap .crumbs a { text-decoration: none; }
+.case-head h1 { font-size: 32px; letter-spacing: 0; line-height: 1.25; margin: 0 0 8px; font-weight: 600; }
+.case-head .case-lede { font-size: 16px; max-width: 72ch; color: var(--muted); margin: 0 0 16px; }
+.case-wrap .ach { margin: 24px 0; }
+.case-wrap .pin-viz { margin: 0 0 16px; }
+.case-readme .box-body { padding: 8px 32px 8px; }
+.case-readme h2 { font-size: 20px; border-bottom: 1px solid var(--line); padding-bottom: 6px; margin: 24px 0 12px; font-weight: 600; letter-spacing: 0; }
+.case-readme table { border-collapse: collapse; margin: 12px 0; } .case-readme th, .case-readme td { border: 1px solid var(--line); padding: 6px 13px; text-align: left; }
+.case-readme tr:nth-child(2n) td { background: var(--surface-2); }
+.case-meta2 { display: flex; flex-wrap: wrap; gap: 8px 24px; margin: 0 0 8px; font-size: 12px; color: var(--muted); }
+.case-meta2 b { color: var(--ink); }
+.case-fig { margin: 0 0 24px; } .case-fig img { width: 100%; border: 1px solid var(--line); border-radius: 6px; background: #fff; } .case-fig figcaption { font-size: 12px; color: var(--muted); margin-top: 6px; }
+.case-nav2 { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; border-top: 1px solid var(--line); padding-top: 16px; margin-top: 8px; }
+@media (max-width: 860px) { .case-readme .box-body { padding: 4px 16px; } .case-wrap { padding: 16px; } }
+.case-wrap .pin-viz .sq { animation: pop .5s both; animation-delay: var(--d); }
+.case-wrap .pin-viz .bar { animation: grow .6s both; animation-delay: var(--d); transform-origin: bottom; transform-box: fill-box; }
+.case-wrap .pin-viz .trace { stroke-dasharray: 600; animation: draw 1.4s both; }
+.case-wrap .pin-viz .loop { stroke-dasharray: 5 4; animation: dash .6s linear infinite; }
+.case-wrap .pin-viz svg { height: 56px; }
+@media (prefers-reduced-motion: reduce) { .case-wrap .pin-viz * { animation: none !important; } }

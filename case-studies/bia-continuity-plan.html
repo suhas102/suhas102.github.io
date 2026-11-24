@@ -4,24 +4,22 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Business impact analysis and continuity plan | Suhas Suresha</title>
 <meta name="description" content="A seven-page business impact analysis and continuity plan for a fictional same-day delivery service: how bad a disruption gets over time, how fast each step must recover, and what to do meanwhile.">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400..700;1,8..60,400..600&display=swap">
 <link rel="stylesheet" href="../assets/css/site.css">
+<link rel="stylesheet" href="../assets/css/gh.css">
 <script>try{var s=localStorage.getItem("theme"),d=matchMedia("(prefers-color-scheme: dark)").matches;document.documentElement.setAttribute("data-theme",s||(d?"dark":"light"))}catch(e){}</script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
-<header class="site-header"><div class="wrap site-header-inner"><a class="wordmark" href="../index.html">Suhas Suresha</a>
-<nav class="nav" aria-label="Main"><a class="nav-link" href="../index.html#work">Work</a><a class="nav-link" href="../index.html#reliability">Reliability</a><a class="nav-link" href="../index.html#github">GitHub</a><a class="nav-link" href="../index.html#contact">Contact</a></nav>
-<div class="header-actions"><a class="btn btn-small header-cv" href="../assets/Suhas-Suresha-CV.pdf">Download CV</a></div></div></header>
-<main id="main"><article class="case"><div class="wrap">
-<a class="case-back" href="../index.html#work">Back to all work</a>
-<p class="case-kicker">Reliability engineering series</p>
-<h1 class="case-title">Business impact analysis and continuity plan</h1>
-<p class="case-lede">A seven-page business impact analysis and continuity plan for a fictional same-day delivery service: how bad a disruption gets over time, how fast each step must recover, and what to do meanwhile.</p>
-<dl class="case-meta"><div class="case-meta-item"><dt>Method</dt><dd>Business impact analysis</dd></div><div class="case-meta-item"><dt>Data</dt><dd>Fictional retailer</dd></div><div class="case-meta-item"><dt>Code</dt><dd>Document</dd></div><div class="case-meta-item"><dt>Source</dt><dd><a href="https://github.com/suhas102/Risk-resilience-portfolio/tree/main/p6_bia_continuity_plan">View on GitHub</a></dd></div></dl>
+<header class="gh-top"><div class="gh-top-inner"><a class="crumb" href="../index.html#overview">suhas102 <span>/ portfolio</span></a><span class="spacer"></span><a class="btn btn-small" href="../assets/Suhas-Suresha-CV.pdf">Download CV</a><button class="icon-btn" id="theme-toggle" type="button" aria-label="Switch colour theme"></button></div></header>
+<main id="main" class="case-wrap">
+<p class="crumbs"><a href="../index.html#overview">suhas102</a> / <a href="../index.html#repositories">projects</a> / <b>bia-continuity-plan</b></p>
+<div class="case-head"><h1>Business impact analysis and continuity plan</h1><p class="case-lede">A seven-page business impact analysis and continuity plan for a fictional same-day delivery service: how bad a disruption gets over time, how fast each step must recover, and what to do meanwhile.</p>
+<p class="case-meta2"><span><b>Reliability engineering series</b></span><span><b>Method:</b> Business impact analysis</span><span><b>Data:</b> Fictional retailer</span><span><b>Code:</b> Document</span><span><a href="https://github.com/suhas102/Risk-resilience-portfolio/tree/main/p6_bia_continuity_plan">View on GitHub</a></span></p></div>
+<div class="pin-viz" aria-hidden="true"><svg viewBox="0 0 240 44"><g fill="currentColor"><rect class="bar" x="10" y="34" width="18" height="8" rx="2" style="--d:0ms"/><rect class="bar" x="68" y="24" width="18" height="18" rx="2" style="--d:80ms"/><rect class="bar" x="126" y="12" width="18" height="30" rx="2" style="--d:160ms"/><rect class="bar" x="184" y="2" width="18" height="40" rx="2" style="--d:240ms"/></g><g font-size="9" fill="currentColor" text-anchor="middle"><text x="19" y="8">1h</text><text x="77" y="8">4h</text><text x="135" y="8">8h</text><text x="193" y="8">24h</text></g></svg></div>
+<div class="ach" role="list" style="grid-template-columns:repeat(3,minmax(0,1fr))"><div class="ach-item" role="listitem"><div class="ach-ring" style="font-size:17px">7</div><span>pages</span></div><div class="ach-item" role="listitem"><div class="ach-ring" style="font-size:17px">7</div><span>disruption scenarios covered</span></div><div class="ach-item" role="listitem"><div class="ach-ring" style="font-size:17px">4</div><span>recovery-time conflicts found</span></div></div>
 
-<div class="case-body"><section class="case-section"><h2>Problem</h2><div class="case-section-body"><p>A dependency map shows where a process is fragile, but leaders need a plan: how bad is a disruption after 1, 4, 8
-and 24 hours, how fast must each step recover, and what do we do while it recovers?</p></div></section><section class="case-section"><h2>What the document covers</h2><div class="case-section-body"><ol>
+<div class="box case-readme"><div class="box-head">bia-continuity-plan / README.md</div><div class="box-body"><h2>Problem</h2><p>A dependency map shows where a process is fragile, but leaders need a plan: how bad is a disruption after 1, 4, 8
+and 24 hours, how fast must each step recover, and what do we do while it recovers?</p><h2>What the document covers</h2><ol>
 <li>
 <p>Scope and method for a business impact analysis (BIA)</p>
 </li>
@@ -52,7 +50,7 @@ and 24 hours, how fast must each step recover, and what do we do while it recove
 <li>
 <p>Testing and maintenance plan with key risk indicators</p>
 </li>
-</ol></div></section><section class="case-section"><h2>Key findings</h2><div class="case-section-body"><ul>
+</ol><h2>Key findings</h2><ul>
 <li>
 <p>Order capture and payment are the most time-critical steps (1 hour RTO, severe impact within 4 hours at peak trading).</p>
 </li>
@@ -62,9 +60,10 @@ and 24 hours, how fast must each step recover, and what do we do while it recove
 <li>
 <p>Highest-priority actions: wire up the unused DC South as a tested fallback, test a second cloud region and payment route, and resolve the conflicting RTOs.</p>
 </li>
-</ul></div></section><section class="case-section"><h2>Limitations</h2><div class="case-section-body"><p>Fictional retailer. Impact ratings, RTOs, MTPDs and the GBP 12m peak-day revenue basis are illustrative assumptions.
-A real BIA needs workshops with process owners and sign-off from the accountable executive.</p></div></section></div>
-<nav class="case-next" aria-label="More case studies"><a href="ai-model-risk-monitoring.html">Previous: AI model risk monitoring</a></nav>
-</div></article></main>
-<footer class="site-footer"><div class="wrap footer-inner"><span>Suhas Suresha</span><nav class="footer-links" aria-label="Footer"><a href="https://github.com/suhas102">GitHub</a><a href="https://www.linkedin.com/in/suhas-suresha-b54678355/">LinkedIn</a><a href="mailto:suhasuresha8@gmail.com">Email</a></nav></div></footer>
+</ul><h2>Limitations</h2><p>Fictional retailer. Impact ratings, RTOs, MTPDs and the GBP 12m peak-day revenue basis are illustrative assumptions.
+A real BIA needs workshops with process owners and sign-off from the accountable executive.</p></div></div>
+<nav class="case-nav2" aria-label="More case studies"><a href="ai-model-risk-monitoring.html">Previous: AI model risk monitoring</a></nav>
+</main>
+<footer class="gh-foot"><span>Suhas Suresha</span><span><a href="../index.html">Home</a> &middot; <a href="https://github.com/suhas102">GitHub</a> &middot; <a href="https://www.linkedin.com/in/suhas-suresha-b54678355/">LinkedIn</a> &middot; <a href="mailto:suhasuresha8@gmail.com">Email</a></span></footer>
+<script src="../assets/js/main.js" defer></script>
 </body></html>

@@ -86,42 +86,68 @@ def risk_pages():
             repo=repo, url=url, sections=sections, img=img, cap=cap))
     return out
 
+STATS = {
+ "self-healing-rag": [("5,000","documents in the corpus"),("12k","vector chunks indexed"),("1","critic agent in the loop")],
+ "llm-guardrails-gateway": [("30","YAML safety policies"),("2,000","adversarial prompts tested"),("2","directions checked: input and output")],
+ "f1-cognitive-load": [("61","race weekends"),("65k+","laps analysed"),("0.740","best ROC-AUC (XGBoost)")],
+ "kri-early-warning": [("15%","lower forecast error than naive baseline"),("49","hold-out weeks"),("2","weeks of warning")],
+ "incident-themes-nlp": [("506","synthetic incident records"),("8","quarters of data"),("+9.1","points of share for the fastest-growing theme")],
+ "dependency-network": [("20","components modelled"),("11","single points of failure"),("4","recovery-time conflicts")],
+ "disruption-monte-carlo": [("100k","simulated outages"),("46%>8%","chance of exceeding 4 hours, no plan vs plan"),("13%>0.4%","chance of exceeding GBP 3m")],
+ "ai-model-risk-monitoring": [("8","risks in the register"),("~8","weeks drift detection lags the change"),("14.0>10.1","units/week error, model alone vs with fallback")],
+ "bia-continuity-plan": [("7","pages"),("7","disruption scenarios covered"),("4","recovery-time conflicts found")],
+}
+SVG = {
+ "self-healing-rag": '<svg viewBox="0 0 240 44"><g fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="12" width="44" height="20" rx="4"/><rect x="66" y="12" width="44" height="20" rx="4"/><rect x="128" y="12" width="44" height="20" rx="4"/><rect x="190" y="12" width="44" height="20" rx="4"/><path d="M48 22h18M110 22h18M172 22h18"/><path class="loop" d="M150 12C150 2 88 2 88 12"/></g><g font-size="9" fill="currentColor" text-anchor="middle"><text x="26" y="25">fetch</text><text x="88" y="25">write</text><text x="150" y="25">critic</text><text x="212" y="25">answer</text></g></svg>',
+ "llm-guardrails-gateway": '<svg viewBox="0 0 240 44"><g>' + "".join('<rect class="sq" x="%s" y="%s" width="12" height="12" rx="2" style="--d:%sms"/>' % (4+(i%15)*15.5, 6+(i//15)*17, i*40) for i in range(30)) + '</g></svg>',
+ "f1-cognitive-load": '<svg viewBox="0 0 240 44"><path class="trace" fill="none" stroke="currentColor" stroke-width="1.6" d="M2 34C16 34 18 8 32 8S44 34 58 34 64 14 78 14 86 36 100 36 110 6 124 6 132 30 146 30 156 10 170 10 178 32 192 32 202 16 216 16 228 28 238 28"/></svg>',
+ "disruption-monte-carlo": '<svg viewBox="0 0 240 44"><g fill="currentColor">' + "".join('<rect class="bar" x="%s" y="%s" width="9" height="%s" rx="1" style="--d:%sms"/>' % (6+i*12, 42-h, h, i*30) for i,h in enumerate([38,30,24,19,15,12,10,8,6,5,4,3,3,2,2,2,1,1,1,1])) + '</g><path d="M96 2v40" stroke="currentColor" stroke-dasharray="3 3"/></svg>',
+ "kri-early-warning": '<svg viewBox="0 0 240 44"><g stroke="currentColor" fill="none" stroke-width="1.5"><path d="M2 36L30 30 60 33 90 24 120 26 150 16 180 10 210 14 238 6"/><path stroke-dasharray="3 3" opacity=".6" d="M2 14H238"/></g><circle cx="238" cy="6" r="3.5" fill="#cf222e"/></svg>',
+ "ai-model-risk-monitoring": '<svg viewBox="0 0 240 44"><g stroke="currentColor" fill="none" stroke-width="1.5"><path d="M2 34 60 33 120 34 140 30 170 20 200 12 238 8"/><path stroke-dasharray="3 3" opacity=".6" d="M120 2v40"/></g><text x="124" y="12" font-size="9" fill="currentColor">drift</text></svg>',
+ "dependency-network": '<svg viewBox="0 0 240 44"><g stroke="currentColor" fill="none" stroke-width="1.3"><path d="M120 8 40 22M120 8 120 22M120 8 200 22M40 22 70 38M40 22 20 38M120 22 120 38M200 22 170 38M200 22 220 38"/></g><g fill="currentColor"><circle cx="120" cy="8" r="4"/><circle cx="40" cy="22" r="4"/><circle cx="120" cy="22" r="4" fill="#cf222e"/><circle cx="200" cy="22" r="4"/><circle cx="70" cy="38" r="3"/><circle cx="20" cy="38" r="3"/><circle cx="120" cy="38" r="3"/><circle cx="170" cy="38" r="3"/><circle cx="220" cy="38" r="3"/></g></svg>',
+ "incident-themes-nlp": '<svg viewBox="0 0 240 44"><g fill="currentColor">' + "".join('<rect class="bar" x="%s" y="%s" width="22" height="%s" rx="2" style="--d:%sms"/>' % (8+i*38, 42-h, h, i*60) for i,h in enumerate([10,16,22,28,34,38])) + '</g></svg>',
+ "bia-continuity-plan": '<svg viewBox="0 0 240 44"><g fill="currentColor">' + "".join('<rect class="bar" x="%s" y="%s" width="18" height="%s" rx="2" style="--d:%sms"/>' % (10+i*58, 42-h, h, i*80) for i,h in enumerate([8,18,30,40])) + '</g><g font-size="9" fill="currentColor" text-anchor="middle"><text x="19" y="8">1h</text><text x="77" y="8">4h</text><text x="135" y="8">8h</text><text x="193" y="8">24h</text></g></svg>',
+}
+
 def render(pg, prev, nxt):
     url = pg.get("url", GH + pg["repo"])
-    meta = "".join(f'<div class="case-meta-item"><dt>{esc(k)}</dt><dd>{esc(v)}</dd></div>' for k, v in pg["meta"])
-    secs = "".join(f'<section class="case-section"><h2>{esc(h)}</h2><div class="case-section-body">{b}</div></section>' for h, b in pg["sections"])
+    meta = "".join(f'<span><b>{esc(k)}:</b> {esc(v)}</span>' for k, v in pg["meta"])
+    secs = "".join(f'<h2>{esc(h)}</h2>{b}' for h, b in pg["sections"])
+    ach = "".join(f'<div class="ach-item" role="listitem"><div class="ach-ring" style="font-size:{13 if len(n)>5 else 17}px">{esc(n)}</div><span>{esc(l)}</span></div>' for n, l in STATS[pg["slug"]])
+    ach = ach.replace("&gt;", "&rarr;")
     fig = ""
     if pg.get("img"):
-        fig = f'<figure class="case-figure"><img src="../assets/img/{pg["img"]}" alt="{esc(pg["cap"])}" loading="lazy"><figcaption>{esc(pg["cap"])}. Synthetic or illustrative data.</figcaption></figure>'
+        fig = f'<figure class="case-fig"><img src="../assets/img/{pg["img"]}" alt="{esc(pg["cap"])}" loading="lazy"><figcaption>{esc(pg["cap"])}. Synthetic or illustrative data.</figcaption></figure>'
+    guard = '<h2>Try it</h2><p>These are the same kinds of input checks the gateway runs, in your browser.</p><div class="guard" data-guard></div>' if pg["slug"] == "llm-guardrails-gateway" else ""
     nav = []
     if prev: nav.append(f'<a href="{prev["slug"]}.html">Previous: {esc(prev["title"])}</a>')
     if nxt: nav.append(f'<a href="{nxt["slug"]}.html">Next: {esc(nxt["title"])}</a>')
+    scripts = '<script src="../assets/js/main.js" defer></script>' + ('<script src="../assets/js/gateway.js" defer></script><script src="../assets/js/guard.js" defer></script>' if guard else "")
     return f'''<!DOCTYPE html>
 <html lang="en-GB" data-theme="light">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{esc(pg["title"])} | Suhas Suresha</title>
-<meta name="description" content="{esc(pg["lede"])}">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400..700;1,8..60,400..600&display=swap">
+<meta name="description" content="{esc(pg["lede"][:200])}">
 <link rel="stylesheet" href="../assets/css/site.css">
+<link rel="stylesheet" href="../assets/css/gh.css">
 <script>try{{var s=localStorage.getItem("theme"),d=matchMedia("(prefers-color-scheme: dark)").matches;document.documentElement.setAttribute("data-theme",s||(d?"dark":"light"))}}catch(e){{}}</script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
-<header class="site-header"><div class="wrap site-header-inner"><a class="wordmark" href="../index.html">Suhas Suresha</a>
-<nav class="nav" aria-label="Main"><a class="nav-link" href="../index.html#work">Work</a><a class="nav-link" href="../index.html#reliability">Reliability</a><a class="nav-link" href="../index.html#github">GitHub</a><a class="nav-link" href="../index.html#contact">Contact</a></nav>
-<div class="header-actions"><a class="btn btn-small header-cv" href="../assets/Suhas-Suresha-CV.pdf">Download CV</a></div></div></header>
-<main id="main"><article class="case"><div class="wrap">
-<a class="case-back" href="../index.html#work">Back to all work</a>
-<p class="case-kicker">{esc(pg["kicker"])}</p>
-<h1 class="case-title">{esc(pg["title"])}</h1>
-<p class="case-lede">{esc(pg["lede"])}</p>
-<dl class="case-meta">{meta}<div class="case-meta-item"><dt>Source</dt><dd><a href="{url}">View on GitHub</a></dd></div></dl>
+<header class="gh-top"><div class="gh-top-inner"><a class="crumb" href="../index.html#overview">suhas102 <span>/ portfolio</span></a><span class="spacer"></span><a class="btn btn-small" href="../assets/Suhas-Suresha-CV.pdf">Download CV</a><button class="icon-btn" id="theme-toggle" type="button" aria-label="Switch colour theme"></button></div></header>
+<main id="main" class="case-wrap">
+<p class="crumbs"><a href="../index.html#overview">suhas102</a> / <a href="../index.html#repositories">projects</a> / <b>{esc(pg["slug"])}</b></p>
+<div class="case-head"><h1>{esc(pg["title"])}</h1><p class="case-lede">{esc(pg["lede"])}</p>
+<p class="case-meta2"><span><b>{esc(pg["kicker"])}</b></span>{meta}<span><a href="{url}">View on GitHub</a></span></p></div>
+<div class="pin-viz" aria-hidden="true">{SVG[pg["slug"]]}</div>
+<div class="ach" role="list" style="grid-template-columns:repeat(3,minmax(0,1fr))">{ach}</div>
 {fig}
-<div class="case-body">{secs}</div>
-<nav class="case-next" aria-label="More case studies">{"".join(nav)}</nav>
-</div></article></main>
-<footer class="site-footer"><div class="wrap footer-inner"><span>Suhas Suresha</span><nav class="footer-links" aria-label="Footer"><a href="https://github.com/suhas102">GitHub</a><a href="https://www.linkedin.com/in/suhas-suresha-b54678355/">LinkedIn</a><a href="mailto:suhasuresha8@gmail.com">Email</a></nav></div></footer>
+<div class="box case-readme"><div class="box-head">{esc(pg["slug"])} / README.md</div><div class="box-body">{secs}{guard}</div></div>
+<nav class="case-nav2" aria-label="More case studies">{"".join(nav)}</nav>
+</main>
+<footer class="gh-foot"><span>Suhas Suresha</span><span><a href="../index.html">Home</a> &middot; <a href="https://github.com/suhas102">GitHub</a> &middot; <a href="https://www.linkedin.com/in/suhas-suresha-b54678355/">LinkedIn</a> &middot; <a href="mailto:suhasuresha8@gmail.com">Email</a></span></footer>
+{scripts}
 </body></html>'''
 
 def main():
