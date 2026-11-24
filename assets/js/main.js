@@ -21,7 +21,7 @@
       root.setAttribute("data-theme", next);
       try { localStorage.setItem("theme", next); } catch (e) {}
       paintToggle();
-      document.dispatchEvent(new CustomEvent("themechange"));
+      try { document.dispatchEvent(new CustomEvent("themechange")); } catch (e) {}
     });
   }
   paintToggle();

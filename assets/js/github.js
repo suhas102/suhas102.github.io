@@ -77,5 +77,5 @@
 
   var chart = $("gh-chart-img");
   if (chart) { chart.addEventListener("error", function () { chart.parentNode.hidden = true; }); chart.src = "https://ghchart.rshah.org/0969da/" + USER; }
-  load().then(render).catch(function () { live = false; render(FALLBACK); });
+  if (window.fetch && window.Promise) { load().then(render).catch(function () { live = false; render(FALLBACK); }); } else { live = false; render(FALLBACK); }
 })();

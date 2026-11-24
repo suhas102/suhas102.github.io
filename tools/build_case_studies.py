@@ -118,7 +118,7 @@ def render(pg, prev, nxt):
     fig = ""
     if pg.get("img"):
         fig = f'<figure class="case-fig"><img src="../assets/img/{pg["img"]}" alt="{esc(pg["cap"])}" loading="lazy"><figcaption>{esc(pg["cap"])}. Synthetic or illustrative data.</figcaption></figure>'
-    guard = '<h2>Try it</h2><p>These are the same kinds of input checks the gateway runs, in your browser.</p><div class="guard" data-guard></div>' if pg["slug"] == "llm-guardrails-gateway" else ""
+    guard = '<div class="needs-js"><h2>Try it</h2><p>These are the same kinds of input checks the gateway runs, in your browser.</p><div class="guard" data-guard></div></div>' if pg["slug"] == "llm-guardrails-gateway" else ""
     nav = []
     if prev: nav.append(f'<a href="{prev["slug"]}.html">Previous: {esc(prev["title"])}</a>')
     if nxt: nav.append(f'<a href="{nxt["slug"]}.html">Next: {esc(nxt["title"])}</a>')
@@ -131,11 +131,11 @@ def render(pg, prev, nxt):
 <meta name="description" content="{esc(pg["lede"][:200])}">
 <link rel="stylesheet" href="../assets/css/site.css">
 <link rel="stylesheet" href="../assets/css/gh.css">
-<script>try{{var s=localStorage.getItem("theme"),d=matchMedia("(prefers-color-scheme: dark)").matches;document.documentElement.setAttribute("data-theme",s||(d?"dark":"light"))}}catch(e){{}}</script>
+<script>try{{var s=localStorage.getItem("theme"),d=matchMedia("(prefers-color-scheme: dark)").matches;document.documentElement.setAttribute("data-theme",s||(d?"dark":"light"))}}catch(e){{}}document.documentElement.className+=" js"</script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
-<header class="gh-top"><div class="gh-top-inner"><a class="crumb" href="../index.html#overview">suhas102 <span>/ portfolio</span></a><span class="spacer"></span><a class="btn btn-small" href="../assets/Suhas-Suresha-CV.pdf">Download CV</a><button class="icon-btn" id="theme-toggle" type="button" aria-label="Switch colour theme"></button></div></header>
+<header class="gh-top"><div class="gh-top-inner"><a class="crumb" href="../index.html#overview">suhas102 <span>/ portfolio</span></a><span class="spacer"></span><a class="btn btn-small" href="../assets/Suhas-Suresha-CV.pdf">Download CV</a><button class="icon-btn needs-js" id="theme-toggle" type="button" aria-label="Switch colour theme"></button></div></header>
 <main id="main" class="case-wrap">
 <p class="crumbs"><a href="../index.html#overview">suhas102</a> / <a href="../index.html#repositories">projects</a> / <b>{esc(pg["slug"])}</b></p>
 <div class="case-head"><h1>{esc(pg["title"])}</h1><p class="case-lede">{esc(pg["lede"])}</p>

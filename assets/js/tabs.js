@@ -10,8 +10,8 @@
       t.setAttribute("aria-selected", String(on)); t.tabIndex = on ? 0 : -1;
       document.getElementById(t.getAttribute("aria-controls")).hidden = !on;
     });
-    if (push) history.replaceState(null, "", "#" + name);
-    window.dispatchEvent(new Event("resize"));
+    if (push) { try { history.replaceState(null, "", "#" + name); } catch (e) { location.hash = name; } }
+    try { window.dispatchEvent(new Event("resize")); } catch (e) {}
   }
   tabs.forEach(function (t, i) {
     t.addEventListener("click", function () { show(t.getAttribute("data-tab"), true); });

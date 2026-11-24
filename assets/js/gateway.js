@@ -267,9 +267,6 @@
     if (s) s.textContent = note || "";
   }
   function resetStages() { ["input", "retrieve", "critic", "answer"].forEach(function (s) { stage(s, "idle", ""); }); }
-  function wait(ms, id) {
-    return new Promise(function (res) { setTimeout(function () { res(id === runId); }, reduce ? 0 : ms); });
-  }
   function line(html, cls) {
     var p = document.createElement("p");
     p.className = "log-line" + (cls ? " " + cls : "");
@@ -302,72 +299,72 @@
     play(ev, id);
   }
 
-  async function play(ev, id) {
+  /* plays the pipeline as a queue of [delay, action] pairs; no async/await so it runs in any browser */
+  function play(ev, id) {
+    var Q = [], inp = ev.input;
+    function add(ms, fn) { Q.push([ms, fn]); }
     stage("input", "run", "checking");
-    if (!(await wait(450, id))) return;
-    var inp = ev.input;
-    line(k("input check") + "  " + POLICY_COUNT + " policies run");
+    add(450, function () {
+      line(k("input check") + "  " + POLICY_COUNT + " policies run");
+      if (inp.action === "block") {
+        inp.hits.forEach(function (h) { line("  block: " + esc(h.policy) + " (" + esc(h.detail) + ")", "log-block"); });
+        stage("input", "block", "blocked");
+      } else if (inp.action === "redact") {
+        inp.hits.forEach(function (h) { line("  redact: " + esc(h.detail), "log-warn"); });
+        line("  sanitised input: " + esc(inp.text), "log-warn");
+        stage("input", "warn", "redacted");
+      } else { line("  all passed", "log-pass"); stage("input", "pass", "passed"); }
+    });
     if (inp.action === "block") {
-      inp.hits.forEach(function (h) { line("  block: " + esc(h.policy) + " (" + esc(h.detail) + ")", "log-block"); });
-      stage("input", "block", "blocked");
-      if (!(await wait(350, id))) return;
-      stage("retrieve", "idle", "skipped"); stage("critic", "idle", "skipped");
-      line(k("retrieve / critic") + "  skipped, nothing reaches the model", "log-warn");
-      stage("answer", "block", "refused");
-      answerBox("Blocked by the " + esc(inp.hits[0].policy) + " policy. This kind of request never reaches retrieval. Ask about my projects, skills or availability instead.", "log-answer-block");
-      return;
-    }
-    if (inp.action === "redact") {
-      inp.hits.forEach(function (h) { line("  redact: " + esc(h.detail), "log-warn"); });
-      line("  sanitised input: " + esc(inp.text), "log-warn");
-      stage("input", "warn", "redacted");
+      add(350, function () {
+        stage("retrieve", "idle", "skipped"); stage("critic", "idle", "skipped");
+        line(k("retrieve / critic") + "  skipped, nothing reaches the model", "log-warn");
+        stage("answer", "block", "refused");
+        answerBox("Blocked by the " + esc(inp.hits[0].policy) + " policy. This kind of request never reaches retrieval. Ask about my projects, skills or availability instead.", "log-answer-block");
+      });
     } else {
-      line("  all passed", "log-pass");
-      stage("input", "pass", "passed");
-    }
-
-    var firstRetrieve = true;
-    for (var i = 1; i < ev.steps.length; i++) {
-      var s = ev.steps[i];
-      if (s.stage === "retrieve") {
-        stage("retrieve", "run", s.attempt > 1 ? "retry" : "searching");
-        if (!(await wait(500, id))) return;
-        var best = s.result.ranked[0];
-        line(k("retrieve") + (s.attempt > 1 ? " (retry)" : "") + "  " + s.result.ranked.length + " passages matched, best " + (best ? best.score.toFixed(2) : "0.00"));
-        stage("retrieve", s.result.ranked.length ? "pass" : "warn", s.result.ranked.length + " found");
-        firstRetrieve = false;
-      } else if (s.stage === "critic") {
-        stage("critic", "run", "checking");
-        if (!(await wait(500, id))) return;
-        var pct = Math.round(s.coverage * 100);
-        if (s.ok) {
-          line(k("critic") + "  " + pct + "% of the question is supported by the retrieved text", "log-pass");
-          stage("critic", "pass", pct + "% supported");
-        } else {
-          line(k("critic") + "  only " + pct + "% supported" + (s.missing.length ? ". Not found: " + esc(s.missing.join(", ")) : ""), "log-warn");
-          stage("critic", "warn", pct + "% supported");
+      ev.steps.slice(1).forEach(function (s) {
+        if (s.stage === "retrieve") {
+          add(0, function () { stage("retrieve", "run", s.attempt > 1 ? "retry" : "searching"); });
+          add(500, function () {
+            var best = s.result.ranked[0];
+            line(k("retrieve") + (s.attempt > 1 ? " (retry)" : "") + "  " + s.result.ranked.length + " passages matched, best " + (best ? best.score.toFixed(2) : "0.00"));
+            stage("retrieve", s.result.ranked.length ? "pass" : "warn", s.result.ranked.length + " found");
+          });
+        } else if (s.stage === "critic") {
+          add(0, function () { stage("critic", "run", "checking"); });
+          add(500, function () {
+            var pct = Math.round(s.coverage * 100);
+            if (s.ok) { line(k("critic") + "  " + pct + "% of the question is supported by the retrieved text", "log-pass"); stage("critic", "pass", pct + "% supported"); }
+            else { line(k("critic") + "  only " + pct + "% supported" + (s.missing.length ? ". Not found: " + esc(s.missing.join(", ")) : ""), "log-warn"); stage("critic", "warn", pct + "% supported"); }
+          });
+        } else if (s.stage === "retry") {
+          add(400, function () { line(k("reformulate") + "  expanding the query with related terms and retrying once", "log-warn"); });
         }
-      } else if (s.stage === "retry") {
-        if (!(await wait(400, id))) return;
-        line(k("reformulate") + "  expanding the query with related terms and retrying once", "log-warn");
-      }
+      });
+      add(0, function () { stage("answer", "run", "writing"); });
+      add(450, function () {
+        if (ev.outcome === "answered") {
+          var parts = ev.final.top.filter(function (x, idx) { return idx === 0 || x.score >= ev.final.top[0].score * 0.6; });
+          var html = parts.map(function (x) { return esc(x.d.text); }).join(" ");
+          var srcs = parts.map(function (x) { return linkFor(x.d); }).filter(function (v, idx, a) { return a.indexOf(v) === idx; });
+          line(k("output check") + "  answer is a verbatim passage from this site, nothing invented", "log-pass");
+          stage("answer", "pass", "answered");
+          answerBox(html + '<br><span class="muted" style="font-size:.88rem">See: ' + srcs.join(", ") + "</span>");
+        } else {
+          line(k("answer") + "  refused: this site does not contain support for the question", "log-warn");
+          stage("answer", "warn", "no support");
+          answerBox("Insufficient information. This site doesn't cover " + (ev.missing.length ? "<em>" + esc(ev.missing.join(", ")) + "</em>" : "that") +
+            ", so I won't guess. Try asking about my projects, experience, skills or availability.", "log-answer-refuse");
+        }
+      });
     }
-
-    stage("answer", "run", "writing");
-    if (!(await wait(450, id))) return;
-    if (ev.outcome === "answered") {
-      var parts = ev.final.top.filter(function (x, idx) { return idx === 0 || x.score >= ev.final.top[0].score * 0.6; });
-      var html = parts.map(function (x) { return esc(x.d.text); }).join(" ");
-      var srcs = parts.map(function (x) { return linkFor(x.d); }).filter(function (v, idx, a) { return a.indexOf(v) === idx; });
-      line(k("output check") + "  answer is a verbatim passage from this site, nothing invented", "log-pass");
-      stage("answer", "pass", "answered");
-      answerBox(html + '<br><span class="muted" style="font-size:.88rem">See: ' + srcs.join(", ") + "</span>");
-    } else {
-      line(k("answer") + "  refused: this site does not contain support for the question", "log-warn");
-      stage("answer", "warn", "no support");
-      answerBox("Insufficient information. This site doesn't cover " + (ev.missing.length ? "<em>" + esc(ev.missing.join(", ")) + "</em>" : "that") +
-        ", so I won't guess. Try asking about my projects, experience, skills or availability.", "log-answer-refuse");
-    }
+    var n = 0;
+    (function next() {
+      if (id !== runId || n >= Q.length) return;
+      var item = Q[n++];
+      setTimeout(function () { if (id !== runId) return; try { item[1](); } catch (e) {} next(); }, reduce ? 0 : item[0]);
+    })();
   }
 
   form.addEventListener("submit", function (e) {

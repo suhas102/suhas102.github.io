@@ -248,3 +248,15 @@ h1, h2, h3 { font-family: var(--font-display); }
 .ach-item:hover .ach-ring { transform: rotateY(360deg); transition: transform .9s cubic-bezier(.2,.7,.2,1); }
 @media (prefers-reduced-motion: reduce) { .pin { transform: none !important; } .ach-item:hover .ach-ring { transform: none; transition: none; } }
 .vs-chips { padding-left: 0; padding-right: 0; }
+
+/* ---- resilience: no JavaScript, old browsers ---- */
+html:not(.js) .needs-js { display: none !important; }
+.nojs-note { display: none; padding: 12px 16px; border: 1px solid var(--line); border-radius: 6px; background: var(--surface-2); }
+html:not(.js) .nojs-note { display: block; }
+@supports not (aspect-ratio: 1) { .avatar { height: 296px; } }
+@media (max-width: 860px) { @supports not (aspect-ratio: 1) { .avatar { height: 96px; } } }
+@supports not (display: grid) { .gh-page, .pin-grid, .ach { display: block; } .gh-side { margin-bottom: 24px; } .pin { margin-bottom: 16px; } }
+.pin, .box, .box-body, .guard, .guard-panel, .gh-main, .case-wrap { min-width: 0; }
+.guard-form, .console-form { min-width: 0; } .guard-form .console-input, .console-form .console-input { min-width: 0; flex: 1 1 0; width: 100%; }
+.guard-chips, .chips { flex-wrap: wrap; }
+@media (max-width: 860px) { .pin-grid { grid-template-columns: minmax(0, 1fr); } }
