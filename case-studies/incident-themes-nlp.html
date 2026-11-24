@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en-GB" data-theme="light">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Incident themes with NLP | Suhas Suresha</title>
+<meta name="description" content="Incident and audit logs hold hundreds of free-text records. Counting by category hides what is changing. Which themes recur, which are growing, and where are actions going overdue?">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400..700;1,8..60,400..600&display=swap">
+<link rel="stylesheet" href="../assets/css/site.css">
+<script>try{var s=localStorage.getItem("theme"),d=matchMedia("(prefers-color-scheme: dark)").matches;document.documentElement.setAttribute("data-theme",s||(d?"dark":"light"))}catch(e){}</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header"><div class="wrap site-header-inner"><a class="wordmark" href="../index.html">Suhas Suresha</a>
+<nav class="nav" aria-label="Main"><a class="nav-link" href="../index.html#work">Work</a><a class="nav-link" href="../index.html#reliability">Reliability</a><a class="nav-link" href="../index.html#github">GitHub</a><a class="nav-link" href="../index.html#contact">Contact</a></nav>
+<div class="header-actions"><a class="btn btn-small header-cv" href="../assets/Suhas-Suresha-CV.pdf">Download CV</a></div></div></header>
+<main id="main"><article class="case"><div class="wrap">
+<a class="case-back" href="../index.html#work">Back to all work</a>
+<p class="case-kicker">Reliability engineering series</p>
+<h1 class="case-title">Incident themes with NLP</h1>
+<p class="case-lede">Incident and audit logs hold hundreds of free-text records. Counting by category hides what is changing. Which themes recur, which are growing, and where are actions going overdue?</p>
+<dl class="case-meta"><div class="case-meta-item"><dt>Method</dt><dd>TF-IDF, NMF topic modelling</dd></div><div class="case-meta-item"><dt>Data</dt><dd>Synthetic incident records</dd></div><div class="case-meta-item"><dt>Code</dt><dd>incident-themes-nlp</dd></div><div class="case-meta-item"><dt>Source</dt><dd><a href="https://github.com/suhas102/incident-themes-nlp">View on GitHub</a></dd></div></dl>
+<figure class="case-figure"><img src="../assets/img/incident_themes.png" alt="Theme trends across eight quarters" loading="lazy"><figcaption>Theme trends across eight quarters. Synthetic or illustrative data.</figcaption></figure>
+<div class="case-body"><section class="case-section"><h2>Approach</h2><div class="case-section-body"><ol>
+<li>
+<p>Generated 506 synthetic incident/audit records over 8 quarters across 6 themes (third party, IT outage, process/control, colleague availability, health and safety, cyber/data). Two themes were deliberately made to grow so the method can be checked.</p>
+</li>
+<li>
+<p>TF-IDF text features, then NMF topic modelling (unsupervised). Topics are labelled by an analyst from their top terms.</p>
+</li>
+<li>
+<p>Trend analysis (share of incidents, first two vs last two quarters) and an open-action ageing view (share of open actions already past due date).</p>
+</li>
+</ol></div></section><section class="case-section"><h2>Results</h2><div class="case-section-body"><ul>
+<li>
+<p>Fastest growing: Cyber/data (+9.1 points of share) and Third-party/carrier failure (+6.8 points). Both were planted, and the method recovered them.</p>
+</li>
+<li>
+<p>Open actions: Third-party (41 open, 59% overdue) and Cyber (40 open, 48% overdue) combine growth with a large backlog. Process/control has the worst overdue rate (83%) but only 6 open actions.</p>
+</li>
+<li>
+<p>Recovered themes matched the hidden labels perfectly (100% purity).</p>
+</li>
+</ul></div></section><section class="case-section"><h2>What I would tell leadership</h2><div class="case-section-body"><p>Two themes are both growing and carrying the biggest action backlog: third-party and cyber.
+Prioritise closure of those actions and check whether the actions address root cause or just the symptom.</p></div></section><section class="case-section"><h2>Limitations</h2><div class="case-section-body"><p>The 100% match is because synthetic text is much cleaner than real incident text. Real logs need cleaning,
+more topics, manual review of a sample, and coverage checks. Treat topics as a triage aid, not a classification of record.</p></div></section></div>
+<nav class="case-next" aria-label="More case studies"><a href="kri-early-warning.html">Previous: KRI early-warning model</a><a href="dependency-network.html">Next: Dependency network analysis</a></nav>
+</div></article></main>
+<footer class="site-footer"><div class="wrap footer-inner"><span>Suhas Suresha</span><nav class="footer-links" aria-label="Footer"><a href="https://github.com/suhas102">GitHub</a><a href="https://www.linkedin.com/in/suhas-suresha-b54678355/">LinkedIn</a><a href="mailto:suhasuresha8@gmail.com">Email</a></nav></div></footer>
+</body></html>

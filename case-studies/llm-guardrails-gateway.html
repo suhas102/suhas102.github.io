@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en-GB" data-theme="light">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Configurable LLM safety guardrails gateway | Suhas Suresha</title>
+<meta name="description" content="Middleware between an application and a language model that enforces safety and compliance policies on both what goes in and what comes out.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400..700;1,8..60,400..600&display=swap">
+<link rel="stylesheet" href="../assets/css/site.css">
+<script>try{var s=localStorage.getItem("theme"),d=matchMedia("(prefers-color-scheme: dark)").matches;document.documentElement.setAttribute("data-theme",s||(d?"dark":"light"))}catch(e){}</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header"><div class="wrap site-header-inner"><a class="wordmark" href="../index.html">Suhas Suresha</a>
+<nav class="nav" aria-label="Main"><a class="nav-link" href="../index.html#work">Work</a><a class="nav-link" href="../index.html#reliability">Reliability</a><a class="nav-link" href="../index.html#github">GitHub</a><a class="nav-link" href="../index.html#contact">Contact</a></nav>
+<div class="header-actions"><a class="btn btn-small header-cv" href="../assets/Suhas-Suresha-CV.pdf">Download CV</a></div></div></header>
+<main id="main"><article class="case"><div class="wrap">
+<a class="case-back" href="../index.html#work">Back to all work</a>
+<p class="case-kicker">Keele University, June to August 2026</p>
+<h1 class="case-title">Configurable LLM safety guardrails gateway</h1>
+<p class="case-lede">Middleware between an application and a language model that enforces safety and compliance policies on both what goes in and what comes out.</p>
+<dl class="case-meta"><div class="case-meta-item"><dt>Stack</dt><dd>Python, YAML, JSON Schema</dd></div><div class="case-meta-item"><dt>Policies</dt><dd>30</dd></div><div class="case-meta-item"><dt>Testing</dt><dd>2,000 adversarial prompts</dd></div><div class="case-meta-item"><dt>Code</dt><dd>llm-guardrails-gateway</dd></div><div class="case-meta-item"><dt>Source</dt><dd><a href="https://github.com/suhas102/llm-guardrails-gateway">View on GitHub</a></dd></div></dl>
+
+<div class="case-body"><section class="case-section"><h2>The problem</h2><div class="case-section-body"><p>Prompt injection, jailbreaks, personal data in prompts, toxic output and malformed structured output are separate failures, and application teams rarely want to rebuild checks for each one.</p></div></section><section class="case-section"><h2>What I built</h2><div class="case-section-body"><p>A gateway with a YAML policy engine. Policies are configuration, not code, so they can be reviewed, versioned and changed without redeploying. It validates input and output, enforces JSON schemas and topic relevance, and triggers automatic retries or safe fallbacks when validation fails.</p><p>It was validated on 2,000 adversarial prompts covering prompt injection, jailbreaks, PII leakage, toxicity, off-topic responses and schema violations.</p></div></section><section class="case-section"><h2>Why policies as configuration</h2><div class="case-section-body"><p>The people who decide what is acceptable are often not the people who write the application. Keeping policies in a readable file lets them be reviewed and audited on their own.</p></div></section><section class="case-section"><h2>Try the idea</h2><div class="case-section-body"><p>The home-page console runs a small browser version of the input checks: injection, jailbreak, secrets, toxicity and PII redaction.</p></div></section></div>
+<nav class="case-next" aria-label="More case studies"><a href="self-healing-rag.html">Previous: Self-healing RAG and answer validation pipeline</a><a href="f1-cognitive-load.html">Next: Testing, not assuming: cognitive load proxies in F1 telemetry</a></nav>
+</div></article></main>
+<footer class="site-footer"><div class="wrap footer-inner"><span>Suhas Suresha</span><nav class="footer-links" aria-label="Footer"><a href="https://github.com/suhas102">GitHub</a><a href="https://www.linkedin.com/in/suhas-suresha-b54678355/">LinkedIn</a><a href="mailto:suhasuresha8@gmail.com">Email</a></nav></div></footer>
+</body></html>

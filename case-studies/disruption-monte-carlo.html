@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en-GB" data-theme="light">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Monte Carlo disruption simulation | Suhas Suresha</title>
+<meta name="description" content="Online checkout outage during peak trading week.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400..700;1,8..60,400..600&display=swap">
+<link rel="stylesheet" href="../assets/css/site.css">
+<script>try{var s=localStorage.getItem("theme"),d=matchMedia("(prefers-color-scheme: dark)").matches;document.documentElement.setAttribute("data-theme",s||(d?"dark":"light"))}catch(e){}</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header"><div class="wrap site-header-inner"><a class="wordmark" href="../index.html">Suhas Suresha</a>
+<nav class="nav" aria-label="Main"><a class="nav-link" href="../index.html#work">Work</a><a class="nav-link" href="../index.html#reliability">Reliability</a><a class="nav-link" href="../index.html#github">GitHub</a><a class="nav-link" href="../index.html#contact">Contact</a></nav>
+<div class="header-actions"><a class="btn btn-small header-cv" href="../assets/Suhas-Suresha-CV.pdf">Download CV</a></div></div></header>
+<main id="main"><article class="case"><div class="wrap">
+<a class="case-back" href="../index.html#work">Back to all work</a>
+<p class="case-kicker">Reliability engineering series</p>
+<h1 class="case-title">Monte Carlo disruption simulation</h1>
+<p class="case-lede">Online checkout outage during peak trading week.</p>
+<dl class="case-meta"><div class="case-meta-item"><dt>Method</dt><dd>Monte Carlo simulation</dd></div><div class="case-meta-item"><dt>Data</dt><dd>Illustrative assumptions</dd></div><div class="case-meta-item"><dt>Code</dt><dd>disruption-monte-carlo-simulation</dd></div><div class="case-meta-item"><dt>Source</dt><dd><a href="https://github.com/suhas102/disruption-monte-carlo-simulation">View on GitHub</a></dd></div></dl>
+<figure class="case-figure"><img src="../assets/img/montecarlo_results.png" alt="Simulated loss with and without a plan" loading="lazy"><figcaption>Simulated loss with and without a plan. Synthetic or illustrative data.</figcaption></figure>
+<div class="case-body"><section class="case-section"><h2>Questions</h2><div class="case-section-body"><p>How large could the loss be, how likely is the outage to exceed our impact tolerance, and how much risk does
+the continuity plan remove?</p></div></section><section class="case-section"><h2>Approach</h2><div class="case-section-body"><p>100,000 simulated outages: random start time (loss depends on the hourly demand profile), lognormal duration (fat tail),
+customer abandonment, goodwill compensation, and two policies: no plan vs plan (faster detection and decisions, a warm failover that works 75% of the time,
+a manual ordering channel, customer comms). Impact tolerance assumed at 4 hours and GBP 3m. <strong>Every input is an illustrative assumption</strong>
+listed in one block at the top of the script so a reviewer can challenge it.</p></div></section><section class="case-section"><h2>Results (illustrative)</h2><div class="case-section-body"><table>
+<thead>
+<tr>
+<th></th>
+<th>No plan</th>
+<th>With plan</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mean loss</td>
+<td>GBP 1.58m</td>
+<td>GBP 0.27m</td>
+</tr>
+<tr>
+<td>95th percentile loss</td>
+<td>GBP 4.20m</td>
+<td>GBP 1.04m</td>
+</tr>
+<tr>
+<td>Chance outage exceeds 4h tolerance</td>
+<td>46%</td>
+<td>8%</td>
+</tr>
+<tr>
+<td>Chance loss exceeds GBP 3m tolerance</td>
+<td>13%</td>
+<td>0.4%</td>
+</tr>
+</tbody>
+</table>
+<p>Sensitivity: the result depends most on whether the failover actually works (75% assumed), then on abandonment and on peak-day revenue. Failover reliability is the assumption to test, not trust.</p></div></section><section class="case-section"><h2>What I would tell leadership</h2><div class="case-section-body"><p>The plan is worth much more than its cost only if the failover has been tested. Run a live failover
+exercise before peak and track the failover success rate as a KRI.</p></div></section><section class="case-section"><h2>Limitations</h2><div class="case-section-body"><p>Revenue, abandonment and failover figures are assumptions, not data, so absolute GBP values are not predictions.
+The value is in comparing options and showing which assumptions matter. Replace the inputs with real BIA and incident history.</p></div></section></div>
+<nav class="case-next" aria-label="More case studies"><a href="dependency-network.html">Previous: Dependency network analysis</a><a href="ai-model-risk-monitoring.html">Next: AI model risk monitoring</a></nav>
+</div></article></main>
+<footer class="site-footer"><div class="wrap footer-inner"><span>Suhas Suresha</span><nav class="footer-links" aria-label="Footer"><a href="https://github.com/suhas102">GitHub</a><a href="https://www.linkedin.com/in/suhas-suresha-b54678355/">LinkedIn</a><a href="mailto:suhasuresha8@gmail.com">Email</a></nav></div></footer>
+</body></html>

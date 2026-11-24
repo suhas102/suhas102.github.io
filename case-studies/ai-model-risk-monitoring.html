@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en-GB" data-theme="light">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI model risk monitoring | Suhas Suresha</title>
+<meta name="description" content="A machine-learning model drives stock allocation. How can it fail, how would we know, and what keeps the business running when it does?">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400..700;1,8..60,400..600&display=swap">
+<link rel="stylesheet" href="../assets/css/site.css">
+<script>try{var s=localStorage.getItem("theme"),d=matchMedia("(prefers-color-scheme: dark)").matches;document.documentElement.setAttribute("data-theme",s||(d?"dark":"light"))}catch(e){}</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header"><div class="wrap site-header-inner"><a class="wordmark" href="../index.html">Suhas Suresha</a>
+<nav class="nav" aria-label="Main"><a class="nav-link" href="../index.html#work">Work</a><a class="nav-link" href="../index.html#reliability">Reliability</a><a class="nav-link" href="../index.html#github">GitHub</a><a class="nav-link" href="../index.html#contact">Contact</a></nav>
+<div class="header-actions"><a class="btn btn-small header-cv" href="../assets/Suhas-Suresha-CV.pdf">Download CV</a></div></div></header>
+<main id="main"><article class="case"><div class="wrap">
+<a class="case-back" href="../index.html#work">Back to all work</a>
+<p class="case-kicker">Reliability engineering series</p>
+<h1 class="case-title">AI model risk monitoring</h1>
+<p class="case-lede">A machine-learning model drives stock allocation. How can it fail, how would we know, and what keeps the business running when it does?</p>
+<dl class="case-meta"><div class="case-meta-item"><dt>Method</dt><dd>Drift tests, fallback model</dd></div><div class="case-meta-item"><dt>Data</dt><dd>Synthetic weekly demand</dd></div><div class="case-meta-item"><dt>Code</dt><dd>ai-model-risk-monitoring</dd></div><div class="case-meta-item"><dt>Source</dt><dd><a href="https://github.com/suhas102/ai-model-risk-monitoring">View on GitHub</a></dd></div></dl>
+<figure class="case-figure"><img src="../assets/img/ai_drift_monitoring.png" alt="Drift detection and forecast error" loading="lazy"><figcaption>Drift detection and forecast error. Synthetic or illustrative data.</figcaption></figure>
+<div class="case-body"><section class="case-section"><h2>Part A: drift demonstration</h2><div class="case-section-body"><p>Synthetic weekly demand with a planted change at 6 Jan 2025 (price inflation, promotions
+working less, new product mix). The model trained on the first 60 weeks degrades after that date. Monitoring compares the
+latest 20 weeks of inputs to the training data (two-sample KS test per feature) and tracks rolling forecast error.
+A simple challenger model re-fitted weekly on the last 26 weeks is the pre-agreed fallback.</p></div></section><section class="case-section"><h2>Results</h2><div class="case-section-body"><ul>
+<li>
+<p>No false alarms in the 24 monitored weeks before the change.</p>
+</li>
+<li>
+<p>First amber alert 3 March 2025, red 21 April 2025. Detection lags the change by about 8 weeks because a 20-week window needs time to fill. Shorter windows detect sooner but alarm more.</p>
+</li>
+<li>
+<p>Input-drift monitoring flagged the problem before the error metric did, because error needs actual sales to arrive.</p>
+</li>
+<li>
+<p>Mean error after the first red alert: model alone 14.0 units/week, monitored with fallback 10.1, retrained gradient boosting 15.5. Retraining the same model type on a short window did not help here (tree models cannot extrapolate to new price levels), so the fallback needs to be a different, adaptable model. This was a finding, not what I expected.</p>
+</li>
+<li>
+<p>Classic PSI thresholds (0.1 / 0.25) gave false alarms on 20-week windows (two identical distributions score about 0.25 by chance), so alerts use KS tests instead.</p>
+</li>
+</ul></div></section><section class="case-section"><h2>Part B: AI risk register</h2><div class="case-section-body"><p>(<code>ai_risk_register.csv</code>): 8 risks (drift, silent input failure, third-party model outage, over-reliance,
+bias across stores, change control, privacy, explainability), each with cause, impact, likelihood x impact score, controls, KRIs and suggested owner.
+Highest: drift (16) and silent input failure (15).</p></div></section><section class="case-section"><h2>What I would tell leadership</h2><div class="case-section-body"><p>Approve three controls before relying on the model: input and drift monitoring with
+agreed thresholds, a tested fallback with its accuracy known in advance, and a named owner who decides when to switch.</p></div></section><section class="case-section"><h2>Limitations</h2><div class="case-section-body"><p>Synthetic data. Ratings in the register are my proposals for discussion with owners, not agreed scores.</p></div></section></div>
+<nav class="case-next" aria-label="More case studies"><a href="disruption-monte-carlo.html">Previous: Monte Carlo disruption simulation</a><a href="bia-continuity-plan.html">Next: Business impact analysis and continuity plan</a></nav>
+</div></article></main>
+<footer class="site-footer"><div class="wrap footer-inner"><span>Suhas Suresha</span><nav class="footer-links" aria-label="Footer"><a href="https://github.com/suhas102">GitHub</a><a href="https://www.linkedin.com/in/suhas-suresha-b54678355/">LinkedIn</a><a href="mailto:suhasuresha8@gmail.com">Email</a></nav></div></footer>
+</body></html>

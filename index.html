@@ -1,20 +1,29 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en-GB" data-theme="light">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Suhas Suresha — AI Engineer & Data Scientist · London</title>
-<meta name="description" content="Suhas Suresha — MSc AI & Data Science graduate (Keele University, expected Distinction). AI/ML Engineer & Data Scientist in London: Generative AI, RAG, LLM safety, machine learning and data engineering. Available immediately." />
-<link rel="canonical" href="https://suhas102.github.io/" />
-<meta name="author" content="Suhas Suresha" />
-<meta property="og:type" content="profile" />
-<meta property="og:title" content="Suhas Suresha — AI Engineer & Data Scientist" />
-<meta property="og:description" content="MSc AI & Data Science graduate building reliable AI systems: self-healing RAG, LLM guardrails, ML on 65k+ F1 laps. London · available immediately." />
-<meta property="og:url" content="https://suhas102.github.io/" />
-<meta name="twitter:card" content="summary" />
-<meta name="twitter:title" content="Suhas Suresha — AI Engineer & Data Scientist" />
-<meta name="twitter:description" content="Generative AI · RAG · LLM safety · ML · Data engineering. London · available immediately." />
-<meta name="theme-color" content="#0b1220" />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Suhas Suresha | AI Engineer and Data Scientist, London</title>
+<meta name="description" content="Suhas Suresha is an AI engineer and data scientist in London. He builds retrieval, safety and monitoring layers that make language-model applications reliable: self-healing RAG, LLM guardrails, telemetry modelling and MLOps.">
+<meta name="theme-color" content="#f2f4f7">
+<meta property="og:title" content="Suhas Suresha | AI Engineer and Data Scientist">
+<meta property="og:description" content="AI systems that check their own work. Self-healing RAG, LLM guardrails, reliability engineering and applied machine learning.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://suhas102.github.io/">
+<link rel="canonical" href="https://suhas102.github.io/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400..700;1,8..60,400..600&display=swap">
+<link rel="stylesheet" href="assets/css/site.css">
+<script>
+  (function () {
+    try {
+      var saved = localStorage.getItem("theme");
+      var dark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+      document.documentElement.setAttribute("data-theme", saved || (dark ? "dark" : "light"));
+    } catch (e) {}
+  })();
+</script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -28,319 +37,329 @@
     {"@type": "CollegeOrUniversity", "name": "Keele University"},
     {"@type": "CollegeOrUniversity", "name": "BMS Institute of Technology"}
   ],
-  "knowsAbout": ["Machine Learning", "Generative AI", "Retrieval-Augmented Generation", "LangGraph", "LLM Safety", "Data Engineering", "Python", "SQL", "AWS"],
+  "knowsAbout": ["Machine Learning", "Generative AI", "Retrieval-Augmented Generation", "LangGraph", "LLM Safety", "Data Engineering", "Operational Resilience", "Python", "SQL", "AWS"],
   "sameAs": ["https://github.com/suhas102", "https://www.linkedin.com/in/suhas-suresha-b54678355/"]
 }
 </script>
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230ea5e9'/><text x='50' y='68' font-size='52' text-anchor='middle' fill='white' font-family='sans-serif' font-weight='bold'>S</text></svg>" />
-<link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-<a class="skip-link" href="#main">Skip to content</a>
+<a class="skip" href="#main">Skip to content</a>
 
-<header class="nav" id="top">
-  <div class="nav-inner">
-    <a class="brand" href="#home" aria-label="Suhas Suresha home">
-      <span class="brand-mark">S</span>
-      <span class="brand-text">Suhas Suresha</span>
-    </a>
-    <nav class="nav-links" id="navLinks" aria-label="Primary">
-      <a href="#about">About</a>
-      <a href="#experience">Experience</a>
-      <a href="#projects">Projects</a>
-      <a href="#skills">Skills</a>
-      <a href="#education">Education</a>
-      <a href="#hiring">Hiring</a>
-      <a href="#contact">Contact</a>
+<header class="site-header">
+  <div class="wrap site-header-inner">
+    <a class="wordmark" href="#top" aria-label="Suhas Suresha, back to top">Suhas Suresha</a>
+    <nav class="nav" id="nav" aria-label="Main">
+      <a class="nav-link" href="#work">Work</a>
+      <a class="nav-link" href="#reliability">Reliability</a>
+      <a class="nav-link" href="#github">GitHub</a>
+      <a class="nav-link" href="#experience">Experience</a>
+      <a class="nav-link" href="#contact">Contact</a>
     </nav>
-    <div class="nav-actions">
-      <a class="btn btn-primary btn-sm" href="assets/Suhas-Suresha-CV.pdf" download>CV</a>
-      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">◐</button>
-      <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">☰</button>
+    <div class="header-actions">
+      <a class="btn btn-small header-cv" href="assets/Suhas-Suresha-CV.pdf">Download CV</a>
+      <button class="icon-btn" id="theme-toggle" type="button" aria-label="Switch colour theme">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      </button>
+      <button class="icon-btn nav-toggle" id="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
     </div>
   </div>
 </header>
 
 <main id="main">
-<!-- HERO -->
-<section class="hero" id="home">
-  <div class="hero-bg" aria-hidden="true"></div>
-  <div class="container hero-grid">
-    <div class="hero-copy">
-      <p class="eyebrow"><span class="pulse"></span> Available immediately · London</p>
-      <h1>Suhas Suresha</h1>
-      <h2>AI Engineer &amp; Data Scientist</h2>
-      <p class="hero-sub">Generative AI · RAG &amp; Agents · LLM Safety · Machine Learning · Data Engineering</p>
-      <p class="hero-intro">MSc Artificial Intelligence and Data Science graduate from Keele University (expected Distinction) who builds AI systems that hold up in production: a self-healing RAG pipeline that refuses to hallucinate, a 30-policy LLM safety gateway tested on 2,000 adversarial prompts, and data pipelines that cut processing time by up to 50%.</p>
-      <div class="hero-btns">
-        <a class="btn btn-primary" href="#projects">View Projects</a>
-        <a class="btn btn-secondary" href="https://github.com/suhas102" target="_blank" rel="noopener">GitHub</a>
-        <a class="btn btn-secondary" href="https://www.linkedin.com/in/suhas-suresha-b54678355/" target="_blank" rel="noopener">LinkedIn</a>
-        <a class="btn btn-ghost" href="assets/Suhas-Suresha-CV.pdf" download>Download CV</a>
-      </div>
-      <div class="hero-meta">
-        <span>📍 London · hybrid or on-site</span>
-        <span>✅ UK right to work (Graduate visa)</span>
-        <span>✉️ <a href="mailto:suhasuresha8@gmail.com">suhasuresha8@gmail.com</a></span>
-      </div>
-    </div>
-    <div class="hero-card">
-      <div class="terminal">
-        <div class="terminal-bar"><span></span><span></span><span></span><span class="term-title">suhas — portfolio.py</span></div>
-<pre><code><span class="c"># reliable AI systems, end to end</span>
-<span class="k">from</span> suhas <span class="k">import</span> build
 
-stack = [<span class="s">"Python"</span>, <span class="s">"SQL"</span>, <span class="s">"LangGraph"</span>,
-         <span class="s">"RAG"</span>, <span class="s">"AWS"</span>, <span class="s">"Docker"</span>]
-
-systems = build(
-    rag=<span class="s">"self-healing + critic agent"</span>,
-    safety=<span class="s">"30-policy guardrail gateway"</span>,
-    telemetry=<span class="s">"65k laps · ROC-AUC 0.740"</span>,
-    mlops=<span class="s">"GitHub Actions → Docker → Cloud"</span>,
-)
-<span class="k">print</span>(systems.ship())  <span class="c"># commit → test → deploy</span></code></pre>
+<!-- ================= HERO ================= -->
+<section class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div>
+      <h1 class="hero-title">AI systems that check their own work</h1>
+      <p class="hero-lede">I'm Suhas Suresha, an AI engineer and data scientist in London. I build the retrieval, safety and monitoring layers that make language-model applications reliable enough to ship.</p>
+      <p class="hero-proof">Recent work: a <a href="case-studies/self-healing-rag.html">self-healing RAG pipeline</a> over 5,000 documents, a <a href="case-studies/llm-guardrails-gateway.html">30-policy guardrail gateway</a> tested on 2,000 adversarial prompts, and a <a href="case-studies/f1-cognitive-load.html">telemetry study of 65,000+ F1 laps</a>.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#work">See the work</a>
+        <a class="btn" href="assets/Suhas-Suresha-CV.pdf">Download CV</a>
       </div>
-      <div class="stat-grid">
-        <div class="stat"><strong>249k</strong><span>rows engineered</span></div>
-        <div class="stat"><strong>65k+</strong><span>F1 laps analysed</span></div>
-        <div class="stat"><strong>2,000</strong><span>adversarial prompts</span></div>
-        <div class="stat"><strong>12k</strong><span>vector chunks</span></div>
+      <div class="hero-links">
+        <a href="https://github.com/suhas102">GitHub</a>
+        <a href="https://www.linkedin.com/in/suhas-suresha-b54678355/">LinkedIn</a>
+        <a href="mailto:suhasuresha8@gmail.com">suhasuresha8@gmail.com</a>
       </div>
+      <p class="hero-status"><span class="status-dot" aria-hidden="true"></span>Available immediately for AI, ML and data roles in London, hybrid or on-site.</p>
     </div>
+
+    <!-- live gateway demo -->
+    <section class="console" aria-labelledby="console-title">
+      <div class="console-head">
+        <h2 class="console-title" id="console-title">Ask this site anything</h2>
+        <p class="console-sub">A small version of the pattern I build: every question passes an input check, retrieval and a critic. If this site can't support an answer, it says so.</p>
+      </div>
+      <div class="pipeline" id="pipeline" aria-hidden="true">
+        <div class="stage" data-stage="input" data-state="idle">Input check<small></small></div>
+        <div class="stage" data-stage="retrieve" data-state="idle">Retrieve<small></small></div>
+        <div class="stage" data-stage="critic" data-state="idle">Critic<small></small></div>
+        <div class="stage" data-stage="answer" data-state="idle">Answer<small></small></div>
+      </div>
+      <div class="console-log" id="console-log" role="log" aria-live="polite" aria-label="Gateway log"></div>
+      <form class="console-form" id="console-form" autocomplete="off">
+        <label class="visually-hidden" for="console-input">Your question</label>
+        <input class="console-input" id="console-input" type="text" maxlength="300" placeholder="Ask about my projects, skills or availability">
+        <button class="btn btn-primary btn-small" type="submit">Ask</button>
+      </form>
+      <div class="chips" id="chips" role="group" aria-label="Example questions"></div>
+      <p class="console-note">Runs entirely in your browser with simple rules and about 30 facts from this page. It is a teaching demo, not my production gateway.</p>
+    </section>
   </div>
 </section>
 
-<!-- ABOUT -->
-<section class="section" id="about">
-  <div class="container">
-    <p class="section-eyebrow">About</p>
-    <h3 class="section-title">Building practical systems, not isolated models</h3>
-    <div class="two-col">
-      <div>
-        <p>I am an MSc Artificial Intelligence and Data Science student at Keele University with hands-on experience across the AI/ML lifecycle — from SQL-driven data engineering and structured data modelling to predictive modelling, Generative AI, LLM engineering, and cloud-based machine learning.</p>
-        <p>My work focuses on building practical systems rather than isolated models — including self-healing RAG pipelines, configurable LLM safety gateways, telemetry-based predictive modelling, AI evaluation frameworks, and automated ML deployment workflows.</p>
-      </div>
-      <div>
-        <p>I work primarily with <strong>Python</strong> and <strong>SQL</strong>, alongside PyTorch, TensorFlow, Scikit-learn, LangGraph, AWS, GCP, Docker, GitHub, and ML deployment tooling.</p>
-        <p class="muted">Interests: applied machine learning · Generative AI · AI infrastructure · knowledge engineering · reliable AI systems.</p>
-        <div class="tag-row">
-          <span>Python</span><span>SQL</span><span>RAG</span><span>LangGraph</span><span>LLM Safety</span><span>AWS</span><span>Docker</span><span>MLOps</span>
-        </div>
-      </div>
+<!-- ================= WORK ================= -->
+<section class="section" id="work">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 class="section-title">Selected work</h2>
+      <p class="section-intro">Each project has a case study with what was built, how it works and what it showed, and links to the code.</p>
     </div>
+    <ol class="work-list">
+      <li class="work-row">
+        <div class="work-when">Feb to Jun 2026<br>Keele University</div>
+        <div>
+          <h3 class="work-title"><a href="case-studies/self-healing-rag.html">Self-healing RAG and answer validation pipeline</a></h3>
+          <p class="work-summary">A retrieval-augmented generation pipeline in LangGraph that detects its own hallucinations, reformulates the query and falls back safely instead of guessing.</p>
+          <p class="work-result">5,000-document corpus, 12,000 vector chunks, a critic agent that sends unsupported answers back for re-retrieval.</p>
+          <ul class="tags"><li class="tag">Python</li><li class="tag">LangGraph</li><li class="tag">RAG</li><li class="tag">Vector stores</li><li class="tag">Agentic AI</li></ul>
+        </div>
+        <div class="work-links"><a href="case-studies/self-healing-rag.html">Case study</a><a href="https://github.com/suhas102/self-healing-rag-pipeline">Code</a></div>
+      </li>
+      <li class="work-row">
+        <div class="work-when">Jun to Aug 2026<br>Keele University</div>
+        <div>
+          <h3 class="work-title"><a href="case-studies/llm-guardrails-gateway.html">Configurable LLM safety guardrails gateway</a></h3>
+          <p class="work-summary">Middleware that sits between an application and a language model and enforces safety and compliance policies on both input and output.</p>
+          <p class="work-result">30 policies in a YAML engine, validated on 2,000 adversarial prompts covering injection, jailbreaks, PII leakage, toxicity and schema violations.</p>
+          <ul class="tags"><li class="tag">Python</li><li class="tag">LLM guardrails</li><li class="tag">YAML</li><li class="tag">JSON Schema</li><li class="tag">PII detection</li></ul>
+        </div>
+        <div class="work-links"><a href="case-studies/llm-guardrails-gateway.html">Case study</a><a href="https://github.com/suhas102/llm-guardrails-gateway">Code</a></div>
+      </li>
+      <li class="work-row">
+        <div class="work-when">Jun to Aug 2026<br>MSc dissertation</div>
+        <div>
+          <h3 class="work-title"><a href="case-studies/f1-cognitive-load.html">Testing, not assuming: cognitive load proxies in F1 telemetry</a></h3>
+          <p class="work-summary">A confound-controlled test of whether driving signals such as throttle smoothness really track cognitive load, rather than track, car or driver effects.</p>
+          <p class="work-result">61 race weekends, 28 drivers, 65,000+ laps. XGBoost reached ROC-AUC 0.740, delivered as a queryable tool with CLI and Tkinter interfaces.</p>
+          <ul class="tags"><li class="tag">Python</li><li class="tag">XGBoost</li><li class="tag">SHAP</li><li class="tag">scikit-learn</li><li class="tag">OpenF1</li></ul>
+        </div>
+        <div class="work-links"><a href="case-studies/f1-cognitive-load.html">Case study</a><a href="https://github.com/suhas102/f1-cognitive-load-thesis">Code</a></div>
+      </li>
+      <li class="work-row">
+        <div class="work-when">BTech thesis<br>BMS Institute</div>
+        <div>
+          <h3 class="work-title">Automated CI/CD pipeline for machine learning deployment</h3>
+          <p class="work-summary">GitHub, Docker and cloud deployment wired together so every change to an ML application is validated, tested, containerised and released automatically.</p>
+          <ul class="tags"><li class="tag">GitHub Actions</li><li class="tag">Docker</li><li class="tag">CI/CD</li><li class="tag">Cloud deployment</li></ul>
+        </div>
+        <div class="work-links"><span class="muted">No public repo</span></div>
+      </li>
+    </ol>
   </div>
 </section>
 
-<!-- EXPERIENCE -->
-<section class="section alt" id="experience">
-  <div class="container">
-    <p class="section-eyebrow">Experience</p>
-    <h3 class="section-title">Experience</h3>
-    <div class="timeline">
-      <article class="job">
-        <div class="job-head">
-          <div><h4>Junior Data Scientist — REVIORA Technologies</h4><p class="muted">Bangalore, India · Jan 2025 – Jul 2025</p></div>
-          <span class="pill">Data Science</span>
+<!-- ================= RELIABILITY SERIES ================= -->
+<section class="section" id="reliability">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 class="section-title">Reliability engineering series</h2>
+      <p class="section-intro">Six projects on one question: how do you keep a system working when its inputs, suppliers or models fail? All use synthetic data or stated assumptions, and each case study lists its limitations. Two of them run below, in your browser.</p>
+    </div>
+
+    <div class="series-list">
+      <article class="series-item">
+        <h3 class="series-name"><a href="case-studies/kri-early-warning.html">KRI early-warning model</a></h3>
+        <p class="series-text">Forecasts a late-delivery indicator two weeks ahead and alerts before the tolerance is breached.</p>
+        <div class="series-links"><a href="case-studies/kri-early-warning.html">Case study</a><a href="https://github.com/suhas102/kri-early-warning-model">Code</a></div>
+      </article>
+      <article class="series-item">
+        <h3 class="series-name"><a href="case-studies/incident-themes-nlp.html">Incident themes with NLP</a></h3>
+        <p class="series-text">Topic modelling on incident and audit records to find growing themes and overdue-action hotspots.</p>
+        <div class="series-links"><a href="case-studies/incident-themes-nlp.html">Case study</a><a href="https://github.com/suhas102/incident-themes-nlp">Code</a></div>
+      </article>
+      <article class="series-item">
+        <h3 class="series-name"><a href="case-studies/dependency-network.html">Dependency network analysis</a></h3>
+        <p class="series-text">Graph analysis of a critical process: single points of failure, concentration and recovery-time conflicts.</p>
+        <div class="series-links"><a href="case-studies/dependency-network.html">Case study</a><a href="https://github.com/suhas102/dependency-network-analysis">Code</a></div>
+      </article>
+      <article class="series-item">
+        <h3 class="series-name"><a href="case-studies/disruption-monte-carlo.html">Monte Carlo disruption simulation</a></h3>
+        <p class="series-text">A peak-trading outage tested against impact tolerances, with and without a continuity plan.</p>
+        <div class="series-links"><a href="case-studies/disruption-monte-carlo.html">Case study</a><a href="https://github.com/suhas102/disruption-monte-carlo-simulation">Code</a></div>
+      </article>
+      <article class="series-item">
+        <h3 class="series-name"><a href="case-studies/ai-model-risk-monitoring.html">AI model risk monitoring</a></h3>
+        <p class="series-text">Drift detection, a fallback model and an eight-risk register for a demand-forecasting model.</p>
+        <div class="series-links"><a href="case-studies/ai-model-risk-monitoring.html">Case study</a><a href="https://github.com/suhas102/ai-model-risk-monitoring">Code</a></div>
+      </article>
+      <article class="series-item">
+        <h3 class="series-name"><a href="case-studies/bia-continuity-plan.html">Business impact analysis and continuity plan</a></h3>
+        <p class="series-text">Impact over time, recovery targets, workarounds and tests for same-day delivery fulfilment.</p>
+        <div class="series-links"><a href="case-studies/bia-continuity-plan.html">Case study</a><a href="https://github.com/suhas102/Risk-resilience-portfolio/tree/main/p6_bia_continuity_plan">Document</a></div>
+      </article>
+    </div>
+
+    <!-- Monte Carlo demo -->
+    <section class="demo" aria-labelledby="mc-title">
+      <div class="demo-head">
+        <div>
+          <h3 class="demo-title" id="mc-title">Simulate a peak-trading outage</h3>
+          <p class="demo-sub">20,000 outages are simulated each time you move a slider. Compare losing checkout with no plan against a plan that has monitoring, a failover and an assisted-order channel.</p>
         </div>
-        <ul>
-          <li><strong>Pipeline Engineering:</strong> Engineered automated data cleaning and preprocessing pipelines using SQL and Python for a 249,000-row × 18-column multi-source dataset, standardising inconsistent real-world data and reducing processing time by 20–50%.</li>
-          <li><strong>Feature Engineering:</strong> Designed structured data models and engineered predictive features from the cleaned dataset, improving downstream model accuracy and data reliability by 5–15 percentage points.</li>
-          <li><strong>Stakeholder Reporting:</strong> Collaborated with cross-functional research teams to translate data-quality improvements and model performance gains into clear, decision-ready reporting.</li>
+        <button class="btn btn-small" type="button" id="mc-reset">Reset values</button>
+      </div>
+      <div class="demo-body">
+        <div class="demo-controls">
+          <div class="control"><label for="mc-median">Typical outage length <output id="mc-median-out"></output></label><input id="mc-median" type="range" min="0.5" max="8" step="0.5" value="2.5"></div>
+          <div class="control"><label for="mc-failover">Failover works when invoked <output id="mc-failover-out"></output></label><input id="mc-failover" type="range" min="0" max="100" step="5" value="75"></div>
+          <div class="control"><label for="mc-abandon">Customers lost, with plan <output id="mc-abandon-out"></output></label><input id="mc-abandon" type="range" min="10" max="80" step="5" value="40"></div>
+          <div class="control"><label for="mc-manual">Orders taken by assisted channel <output id="mc-manual-out"></output></label><input id="mc-manual" type="range" min="0" max="40" step="5" value="15"></div>
+          <div class="control"><label for="mc-rev">Peak-day online revenue <output id="mc-rev-out"></output></label><input id="mc-rev" type="range" min="4" max="24" step="1" value="12"></div>
+        </div>
+        <div class="demo-stage">
+          <div class="legend"><span><span class="swatch" style="background:var(--block)"></span>No plan</span><span><span class="swatch" style="background:var(--accent)"></span>With plan</span><span>Dashed line: loss tolerance, GBP 3m</span></div>
+          <canvas class="chart" id="mc-canvas" role="img" aria-label="Histogram of simulated revenue loss with and without a continuity plan"></canvas>
+          <div class="readouts" id="mc-readouts" aria-live="polite"></div>
+        </div>
+      </div>
+      <p class="demo-foot">All inputs are illustrative assumptions for a fictional retailer, not real figures. This is a simplified browser version of the Python simulation in the <a href="https://github.com/suhas102/disruption-monte-carlo-simulation">code repository</a>, so its numbers will differ from the case study.</p>
+    </section>
+
+    <!-- Dependency map demo -->
+    <section class="demo" aria-labelledby="dm-title">
+      <div class="demo-head">
+        <div>
+          <h3 class="demo-title" id="dm-title">Break the dependency map</h3>
+          <p class="demo-sub">This is a fictional same-day delivery process and what it depends on. Select any box to fail it and see what stops. Try the cloud region, then try both carriers.</p>
+        </div>
+        <button class="btn btn-small" type="button" id="dm-reset">Reset map</button>
+      </div>
+      <div class="demo-stage" style="padding-top:8px">
+        <div class="presets" id="dm-presets" role="group" aria-label="Preset failures"></div>
+        <div class="verdict" id="dm-verdict" data-ok="true" aria-live="polite" style="margin-top:14px"></div>
+        <div class="map-wrap"><svg class="map-svg" id="dm-svg" viewBox="0 0 1000 470" role="group" aria-label="Dependency map of the same-day delivery process"></svg></div>
+      </div>
+      <p class="demo-foot">Red boxes are failed. Amber boxes stop working because something they depend on failed. The dashed box, DC South, is in the inventory but not connected to this process, which the analysis flags as an unused fallback. Where two carriers share a job, losing one is survivable.</p>
+    </section>
+  </div>
+</section>
+
+<!-- ================= GITHUB ================= -->
+<section class="section" id="github">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 class="section-title">Live from GitHub</h2>
+      <p class="section-intro">Pulled from the GitHub API when you open this page, so it is always current.</p>
+    </div>
+    <div class="gh-stats" id="gh-stats"></div>
+    <div class="lang-bar" id="lang-bar" role="img" aria-label="Languages across public repositories"></div>
+    <div class="lang-legend" id="lang-legend"></div>
+    <div class="gh-chart"><img id="gh-chart-img" alt="GitHub contribution graph for suhas102" loading="lazy" width="720" height="140" style="width:100%;height:auto"></div>
+    <div class="gh-filters" id="gh-filters" role="group" aria-label="Filter repositories by language"></div>
+    <div class="repo-grid" id="repo-grid"></div>
+    <p class="muted" style="margin-top:20px;font-size:.95rem">Private repositories are not shown. <a href="https://github.com/suhas102?tab=repositories">See everything on GitHub</a>.</p>
+  </div>
+</section>
+
+<!-- ================= EXPERIENCE ================= -->
+<section class="section" id="experience">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 class="section-title">Experience</h2>
+      <p class="section-intro">Data engineering in industry, plus test engineering in a safety-critical programme.</p>
+    </div>
+    <ol class="timeline">
+      <li class="timeline-item">
+        <h3 class="timeline-role">Junior Data Scientist, REVIORA Technologies</h3>
+        <p class="timeline-meta">Bangalore, India. January to July 2025.</p>
+        <ul class="timeline-list">
+          <li><strong>Pipeline engineering.</strong> Built automated data cleaning and preprocessing pipelines in SQL and Python for a 249,000-row, 18-column multi-source dataset, standardising inconsistent real-world data and cutting processing time by 20 to 50%.</li>
+          <li><strong>Feature engineering.</strong> Designed structured data models and predictive features from the cleaned data, improving downstream model accuracy and data reliability by 5 to 15 percentage points.</li>
+          <li><strong>Stakeholder reporting.</strong> Worked with cross-functional research teams to turn data-quality gains and model results into clear, decision-ready reports.</li>
         </ul>
-      </article>
-      <article class="job">
-        <div class="job-head">
-          <div><h4>Data Engineering Intern — Hindustan Aeronautics Limited</h4><p class="muted">Bangalore, India · Apr 2024 – May 2024</p></div>
-          <span class="pill">Data Engineering</span>
-        </div>
-        <ul>
-          <li><strong>Test Engineering:</strong> Executed structured, data-driven test cycles on combat aircraft systems, applying systematic test planning, validation, and results analysis in a safety-critical environment.</li>
-          <li><strong>Systems Testing:</strong> Coordinated and documented test outcomes across cross-functional engineering workshops into traceable, audit-ready records.</li>
-          <li><strong>Independent Delivery:</strong> Rapidly developed working proficiency in new technical tools and workflows within a 6-week placement, contributing directly to live testing workstreams with minimal supervision.</li>
+      </li>
+      <li class="timeline-item">
+        <h3 class="timeline-role">Data Engineering Intern, Hindustan Aeronautics Limited</h3>
+        <p class="timeline-meta">Bangalore, India. April to May 2024.</p>
+        <ul class="timeline-list">
+          <li><strong>Test engineering.</strong> Ran structured, data-driven test cycles on combat aircraft systems, applying test planning, validation and results analysis in a safety-critical environment.</li>
+          <li><strong>Traceable records.</strong> Documented test outcomes across cross-functional engineering workshops as audit-ready records.</li>
+          <li><strong>Independent delivery.</strong> Reached working proficiency in new tools and workflows within a six-week placement and contributed to live test workstreams with minimal supervision.</li>
         </ul>
-      </article>
-    </div>
-  </div>
-</section>
+      </li>
+    </ol>
 
-<!-- FEATURED PROJECTS -->
-<section class="section" id="projects">
-  <div class="container">
-    <p class="section-eyebrow">Selected work</p>
-    <h3 class="section-title">Featured Projects</h3>
-    <p class="section-sub">What was built → how it was built → what it achieved. Every card links directly to code.</p>
-    <div class="project-grid">
-
-      <article class="card featured">
-        <div class="card-top"><span class="pill accent">RAG · Agentic AI</span><span class="date">Feb 2026 – Jun 2026</span></div>
-        <h4>Self-Healing Retrieval-Augmented Generation &amp; Answer Validation Pipeline</h4>
-        <p class="supervisor">Supervisor: Dr. Ed De Quency · Keele University</p>
-        <p>End-to-end self-healing RAG over a 5,000-document corpus with 12,000 vector chunks — retrieval, generation, hallucination detection, query reformulation, and fallback handling in LangGraph.</p>
-        <p>Critic agent in a stateful, cyclical workflow evaluates answer grounding, triggers re-retrieval for unsupported responses, and returns a safe “insufficient information” fallback instead of ungrounded answers.</p>
-        <div class="tag-row"><span>Python</span><span>RAG</span><span>LangGraph</span><span>Vector Stores</span><span>Agentic AI</span></div>
-        <div class="card-actions"><a class="btn btn-primary btn-sm" href="https://github.com/suhas102/self-healing-rag-pipeline" target="_blank" rel="noopener">GitHub ↗</a></div>
-      </article>
-
-      <article class="card featured">
-        <div class="card-top"><span class="pill accent">LLM Safety</span><span class="date">Jun 2026 – Aug 2026</span></div>
-        <h4>Configurable LLM Safety Guardrails &amp; Compliance Validation Gateway</h4>
-        <p class="supervisor">Supervisor: Dr. Nadia Kanwal · Keele University</p>
-        <p>Configurable LLM middleware gateway enforcing 30 safety and compliance policies, validated across 2,000 adversarial prompts covering prompt injection, jailbreaks, PII leakage, toxicity, off-topic responses, and schema violations.</p>
-        <p>YAML-based policy engine with input/output validation — blocks unsafe requests, filters toxic content, enforces JSON schemas, and triggers automatic retries or safe fallbacks.</p>
-        <div class="tag-row"><span>Python</span><span>LLM Guardrails</span><span>YAML</span><span>JSON Schema</span><span>PII Detection</span></div>
-        <div class="card-actions"><a class="btn btn-primary btn-sm" href="https://github.com/suhas102/llm-guardrails-gateway" target="_blank" rel="noopener">GitHub ↗</a></div>
-      </article>
-
-      <article class="card featured">
-        <div class="card-top"><span class="pill accent">Dissertation</span><span class="date">Jun 2026 – Aug 2026</span></div>
-        <h4>Testing, Not Assuming: Confound-Controlled Cognitive Load Proxies in F1 Telemetry</h4>
-        <p class="supervisor">Supervisor: Dr. Nadia Kanwal · Keele University</p>
-        <p>End-to-end Python telemetry pipeline on OpenF1 data (pandas, Scikit-learn, XGBoost, SHAP) — throttle smoothness, braking consistency and sector-time variance across 61 race weekends, 28 drivers, 65,000+ laps, with confound control and driver-grouped CV.</p>
-        <p>Logistic Regression, Random Forest and XGBoost validated — <strong>ROC-AUC 0.740 (XGBoost)</strong> — deployed as a queryable reporting tool with CLI + Tkinter interfaces.</p>
-        <div class="tag-row"><span>Python</span><span>OpenF1</span><span>XGBoost</span><span>SHAP</span><span>Scikit-learn</span></div>
-        <div class="card-actions"><a class="btn btn-primary btn-sm" href="https://github.com/suhas102/f1-cognitive-load-thesis" target="_blank" rel="noopener">GitHub ↗</a></div>
-      </article>
-
-      <article class="card featured">
-        <div class="card-top"><span class="pill accent">MLOps · CI/CD</span><span class="date">BTech Thesis</span></div>
-        <h4>Automated CI/CD Pipeline for Machine Learning Model Deployment</h4>
-        <p class="supervisor">BMS Institute of Technology · BTech Project</p>
-        <p>Automated CI/CD workflow integrating GitHub, Docker and cloud deployment — code validation, testing, containerisation and deployment of an ML application, reducing manual steps and improving reproducibility.</p>
-        <div class="tag-row"><span>GitHub Actions</span><span>Docker</span><span>CI/CD</span><span>Cloud Deployment</span></div>
-        <div class="card-actions"><span class="muted small">BTech thesis — no public repo</span></div>
-      </article>
-
-    </div>
-  </div>
-</section>
-
-<!-- GITHUB PROJECTS -->
-<section class="section alt" id="github">
-  <div class="container">
-    <p class="section-eyebrow">Open source</p>
-    <h3 class="section-title">More Projects</h3>
-    <p class="section-sub">Applied AI, machine learning, NLP and data projects — <a href="https://github.com/suhas102" target="_blank" rel="noopener">github.com/suhas102</a></p>
-    <div class="project-grid small">
-
-      <article class="card">
-        <h4>AI Chatbot Testing &amp; Evaluation</h4>
-        <p>Structured evaluation framework covering response quality, edge cases, ambiguity, knowledge boundaries, context handling and safety-adjacent UX — actionable pass/fail results.</p>
-        <div class="tag-row"><span>Python</span><span>LLM Evaluation</span><span>NLP</span><span>AI Safety</span></div>
-        <div class="card-actions"><a class="btn btn-ghost btn-sm" href="https://github.com/suhas102/ai-chatbot-testing-evaluation" target="_blank" rel="noopener">GitHub ↗</a></div>
-      </article>
-
-      <article class="card">
-        <h4>F1 Podium Predictor</h4>
-        <p>Predicts F1 podiums from pre-race and qualifying data with Logistic Regression, Random Forest and Gradient Boosting — season-based splitting to reduce leakage.</p>
-        <div class="tag-row"><span>Python</span><span>Scikit-learn</span><span>Random Forest</span><span>Gradient Boosting</span></div>
-        <div class="card-actions"><a class="btn btn-ghost btn-sm" href="https://github.com/suhas102/f1-podium-predictor" target="_blank" rel="noopener">GitHub ↗</a></div>
-      </article>
-
-      <article class="card">
-        <h4>F1 Circuit Outline Generator</h4>
-        <p>Generates clean circuit-outline graphics from real F1 telemetry with FastF1 — traces the racing line from a session's fastest lap for visual/design use.</p>
-        <div class="tag-row"><span>Python</span><span>FastF1</span><span>Telemetry</span><span>Visualisation</span></div>
-        <div class="card-actions"><a class="btn btn-ghost btn-sm" href="https://github.com/suhas102/f1-circuit-outline-generator" target="_blank" rel="noopener">GitHub ↗</a></div>
-      </article>
-
-      <article class="card">
-        <h4>Mental Health Risk Pattern Analysis</h4>
-        <p>NLP feature extraction and qualitative-coding pattern analysis for anxiety, low-mood and risk-related text signals. <em>Synthetic demo data only — non-clinical, dataset-level analysis, not diagnosis.</em></p>
-        <div class="tag-row"><span>Python</span><span>NLP</span><span>Feature Engineering</span></div>
-        <div class="card-actions"><a class="btn btn-ghost btn-sm" href="https://github.com/suhas102/mental-health-risk-pattern-analysis" target="_blank" rel="noopener">GitHub ↗</a></div>
-      </article>
-
-    </div>
-  </div>
-</section>
-
-<!-- SKILLS -->
-<section class="section" id="skills">
-  <div class="container">
-    <p class="section-eyebrow">Stack</p>
-    <h3 class="section-title">Technical Skills</h3>
-    <div class="skills-grid">
-      <div class="skill"><h4>AI &amp; Machine Learning</h4><p>Deep Learning · NLP · LLMs · TensorFlow · PyTorch · Scikit-learn · Agentic Systems · Model Evaluation · End-to-End ML/AI</p></div>
-      <div class="skill"><h4>Generative AI &amp; LLM Engineering</h4><p>RAG · Vector Stores · LangGraph · Stateful Workflows · Prompt Engineering · LLM Guardrails · I/O Validation · JSON Schema · Prompt-Injection &amp; PII Detection</p></div>
-      <div class="skill"><h4>Cloud &amp; AI Infrastructure</h4><p>AWS (EC2, SageMaker, S3) · GCP BigQuery · MLOps · Model Training &amp; Deployment</p></div>
-      <div class="skill"><h4>Data Engineering</h4><p>Python · SQL · Data Cleaning · Integration · Transformation · ETL · Data Modelling · Relational Databases</p></div>
-      <div class="skill"><h4>Development</h4><p>Git/GitHub · GitHub Actions · Docker · Linux/Unix Shell · CLI · JavaScript · HTML</p></div>
-      <div class="skill"><h4>Visualisation &amp; Reporting</h4><p>Plotly · Dash · Stakeholder Documentation · RAID Logs</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- EDUCATION -->
-<section class="section alt" id="education">
-  <div class="container">
-    <p class="section-eyebrow">Education</p>
-    <h3 class="section-title">Education</h3>
-    <div class="edu-grid">
-      <div class="edu">
-        <h4>MSc Artificial Intelligence and Data Science</h4>
-        <p class="muted">Keele University, United Kingdom · 2025 – 2026 · Expected: Distinction</p>
+    <div class="split" style="margin-top:clamp(48px,7vw,88px)">
+      <div>
+        <h3 class="subhead">Technical skills</h3>
+        <dl class="skills">
+          <div class="skill-group"><dt>AI and machine learning</dt><dd>Deep learning, NLP, LLMs, TensorFlow, PyTorch, scikit-learn, agentic systems, model evaluation, forecasting, drift monitoring</dd></div>
+          <div class="skill-group"><dt>Generative AI and LLM engineering</dt><dd>RAG, vector stores, LangGraph, stateful workflows, prompt engineering, LLM guardrails, input and output validation, JSON Schema, prompt-injection and PII detection</dd></div>
+          <div class="skill-group"><dt>Cloud and infrastructure</dt><dd>AWS (EC2, SageMaker, S3), GCP BigQuery, MLOps, model training and deployment</dd></div>
+          <div class="skill-group"><dt>Data engineering</dt><dd>Python, SQL, data cleaning, integration and transformation, ETL, data modelling, relational databases</dd></div>
+          <div class="skill-group"><dt>Development</dt><dd>Git and GitHub, GitHub Actions, Docker, Linux shell, JavaScript, HTML</dd></div>
+          <div class="skill-group"><dt>Analysis and reporting</dt><dd>Plotly, Dash, NetworkX, Monte Carlo simulation, stakeholder documentation, RAID logs</dd></div>
+        </dl>
       </div>
-      <div class="edu">
-        <h4>BTech Electronics and Communication</h4>
-        <p class="muted">BMS Institute of Technology, India · 2022 – 2024</p>
-        <p><strong>BTech Project — Automated CI/CD Pipeline for ML Deployment:</strong> automated CI/CD with GitHub, Docker and cloud deployment for validation, testing, containerisation and release.</p>
+      <div>
+        <h3 class="subhead">Education</h3>
+        <div class="edu-item"><h4>MSc Artificial Intelligence and Data Science</h4><p>Keele University, United Kingdom</p><p class="edu-meta">2025 to 2026</p></div>
+        <div class="edu-item"><h4>BTech Electronics and Communication</h4><p>BMS Institute of Technology, India</p><p class="edu-meta">2022 to 2024</p></div>
+        <h3 class="subhead" style="margin-top:36px">Leadership</h3>
+        <div class="edu-item"><h4>Co-Captain, AWS Club</h4><p>Keele University</p><p class="edu-meta">January 2026 to present</p><p>Co-lead hands-on workshops and technical sessions on AWS services, and manage membership and engagement.</p></div>
+        <div class="edu-item"><h4>Student Voice Representative</h4><p>MSc AI and Data Science, Keele University</p><p class="edu-meta">October 2025 to present</p><p>Bring cohort feedback to programme staff and push for curriculum improvements.</p></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- LEADERSHIP -->
-<section class="section" id="leadership">
-  <div class="container">
-    <p class="section-eyebrow">Leadership</p>
-    <h3 class="section-title">Leadership</h3>
-    <div class="edu-grid">
-      <div class="edu"><h4>Co-Captain — AWS Club</h4><p class="muted">Keele University · Jan 2026 – Present</p><p>Co-lead the AWS Club — hands-on workshops and technical sessions on AWS services; membership and engagement.</p></div>
-      <div class="edu"><h4>Student Voice Representative</h4><p class="muted">MSc AI &amp; Data Science · Oct 2025 – Present</p><p>Represent cohort feedback to programme staff — raising issues and advocating for curriculum improvements.</p></div>
+<!-- ================= CONTACT ================= -->
+<section class="section" id="contact">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 class="section-title">For recruiters</h2>
+      <p class="section-intro">What I'm looking for, so you can tell quickly whether we fit.</p>
+    </div>
+    <dl class="facts">
+      <dt>Roles</dt><dd>AI or ML engineer, data scientist, GenAI or LLM engineer, data engineer, research assistant, graduate schemes</dd>
+      <dt>Location</dt><dd>London, hybrid or on-site, and open to relocation</dd>
+      <dt>Availability</dt><dd>Immediately, for full-time, graduate or internship roles</dd>
+      <dt>Right to work</dt><dd>UK Graduate visa, sponsorship needed longer term</dd>
+    </dl>
+    <div class="contact-box">
+      <div>
+        <h2>Hiring for AI, ML or data?</h2>
+        <p>Send a role or a problem. I usually reply within a day.</p>
+        <p class="contact-line">suhasuresha8@gmail.com<br>github.com/suhas102<br>linkedin.com/in/suhas-suresha-b54678355</p>
+      </div>
+      <div class="contact-actions">
+        <a class="btn btn-primary" href="mailto:suhasuresha8@gmail.com">Email me</a>
+        <a class="btn" href="https://www.linkedin.com/in/suhas-suresha-b54678355/">LinkedIn</a>
+        <a class="btn" href="https://github.com/suhas102">GitHub</a>
+        <a class="btn" href="assets/Suhas-Suresha-CV.pdf">Download CV</a>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- HIRING -->
-<section class="section" id="hiring">
-  <div class="container">
-    <p class="section-eyebrow">For recruiters</p>
-    <h3 class="section-title">What I'm looking for</h3>
-    <div class="facts-grid">
-      <div class="fact"><span class="fact-label">Roles</span><strong>AI / ML Engineer · Data Scientist · GenAI / LLM Engineer · Data Engineer · Research Assistant · Graduate schemes</strong></div>
-      <div class="fact"><span class="fact-label">Location</span><strong>London (Central preferred) · hybrid or on-site · open to relocation</strong></div>
-      <div class="fact"><span class="fact-label">Availability</span><strong>Immediately · full-time, graduate or internship</strong></div>
-      <div class="fact"><span class="fact-label">Right to work</span><strong>UK Graduate visa · sponsorship needed longer term</strong></div>
-    </div>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section class="section alt" id="contact">
-  <div class="container contact">
-    <p class="section-eyebrow">Contact</p>
-    <h3 class="section-title">Let's Connect</h3>
-    <p>Hiring for AI, machine learning, Generative AI or data engineering? I usually reply within a day.</p>
-    <div class="hero-btns">
-      <a class="btn btn-primary" href="mailto:suhasuresha8@gmail.com">Email Me</a>
-      <a class="btn btn-secondary" href="https://github.com/suhas102" target="_blank" rel="noopener">GitHub</a>
-      <a class="btn btn-secondary" href="https://www.linkedin.com/in/suhas-suresha-b54678355/" target="_blank" rel="noopener">LinkedIn</a>
-      <a class="btn btn-ghost" href="assets/Suhas-Suresha-CV.pdf" download>Download CV</a>
-    </div>
-    <p class="muted small">suhasuresha8@gmail.com · github.com/suhas102 · linkedin.com/in/suhas-suresha-b54678355</p>
-  </div>
-</section>
 </main>
 
-<footer>
-  <div class="container foot">
-    <div><strong>Suhas Suresha</strong><p class="muted small">Artificial Intelligence · Machine Learning · Generative AI · Data Engineering</p></div>
-    <div class="foot-links"><a href="https://github.com/suhas102" target="_blank" rel="noopener">GitHub</a><a href="https://www.linkedin.com/in/suhas-suresha-b54678355/" target="_blank" rel="noopener">LinkedIn</a><a href="mailto:suhasuresha8@gmail.com">Email</a></div>
-    <p class="muted small">© 2026 Suhas Suresha</p>
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <span>Suhas Suresha. Built by hand with HTML, CSS and JavaScript.</span>
+    <nav class="footer-links" aria-label="Footer"><a href="https://github.com/suhas102">GitHub</a><a href="https://www.linkedin.com/in/suhas-suresha-b54678355/">LinkedIn</a><a href="mailto:suhasuresha8@gmail.com">Email</a></nav>
   </div>
 </footer>
 
-<script src="script.js"></script>
+<script src="assets/js/main.js" defer></script>
+<script src="assets/js/gateway.js" defer></script>
+<script src="assets/js/montecarlo.js" defer></script>
+<script src="assets/js/depmap.js" defer></script>
+<script src="assets/js/github.js" defer></script>
 </body>
 </html>

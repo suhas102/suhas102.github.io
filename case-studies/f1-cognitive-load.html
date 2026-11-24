@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en-GB" data-theme="light">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Testing, not assuming: cognitive load proxies in F1 telemetry | Suhas Suresha</title>
+<meta name="description" content="Whether signals such as throttle smoothness really track a driver&#x27;s cognitive load, or just reflect the circuit, the car or the driver.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400..700;1,8..60,400..600&display=swap">
+<link rel="stylesheet" href="../assets/css/site.css">
+<script>try{var s=localStorage.getItem("theme"),d=matchMedia("(prefers-color-scheme: dark)").matches;document.documentElement.setAttribute("data-theme",s||(d?"dark":"light"))}catch(e){}</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header"><div class="wrap site-header-inner"><a class="wordmark" href="../index.html">Suhas Suresha</a>
+<nav class="nav" aria-label="Main"><a class="nav-link" href="../index.html#work">Work</a><a class="nav-link" href="../index.html#reliability">Reliability</a><a class="nav-link" href="../index.html#github">GitHub</a><a class="nav-link" href="../index.html#contact">Contact</a></nav>
+<div class="header-actions"><a class="btn btn-small header-cv" href="../assets/Suhas-Suresha-CV.pdf">Download CV</a></div></div></header>
+<main id="main"><article class="case"><div class="wrap">
+<a class="case-back" href="../index.html#work">Back to all work</a>
+<p class="case-kicker">MSc dissertation, Keele University, June to August 2026</p>
+<h1 class="case-title">Testing, not assuming: cognitive load proxies in F1 telemetry</h1>
+<p class="case-lede">Whether signals such as throttle smoothness really track a driver&#x27;s cognitive load, or just reflect the circuit, the car or the driver.</p>
+<dl class="case-meta"><div class="case-meta-item"><dt>Data</dt><dd>61 race weekends, 28 drivers, 65,000+ laps</dd></div><div class="case-meta-item"><dt>Best model</dt><dd>XGBoost, ROC-AUC 0.740</dd></div><div class="case-meta-item"><dt>Delivered as</dt><dd>CLI and Tkinter tool</dd></div><div class="case-meta-item"><dt>Code</dt><dd>f1-cognitive-load-thesis</dd></div><div class="case-meta-item"><dt>Source</dt><dd><a href="https://github.com/suhas102/f1-cognitive-load-thesis">View on GitHub</a></dd></div></dl>
+
+<div class="case-body"><section class="case-section"><h2>The question</h2><div class="case-section-body"><p>Telemetry-derived measures are often used as proxies for how hard a driver is working mentally. A proxy is only useful if it measures that, and not something that varies with the track, the car or the driver.</p></div></section><section class="case-section"><h2>Approach</h2><div class="case-section-body"><p>I built a confound-controlled analysis using pandas and scikit-learn, with logistic regression, random forest and XGBoost, and used SHAP to see which signals drove predictions. Data covered 61 race weekends, 28 drivers and over 65,000 laps.</p></div></section><section class="case-section"><h2>Result</h2><div class="case-section-body"><p>XGBoost reached a ROC-AUC of 0.740. The model was delivered as a queryable reporting tool with command-line and Tkinter interfaces so results can be explored without code.</p></div></section><section class="case-section"><h2>What it shows about my method</h2><div class="case-section-body"><p>I treat a proxy as a hypothesis to test. Controlling for confounds before trusting a signal is the same discipline I apply to model monitoring and evaluation.</p></div></section></div>
+<nav class="case-next" aria-label="More case studies"><a href="llm-guardrails-gateway.html">Previous: Configurable LLM safety guardrails gateway</a><a href="kri-early-warning.html">Next: KRI early-warning model</a></nav>
+</div></article></main>
+<footer class="site-footer"><div class="wrap footer-inner"><span>Suhas Suresha</span><nav class="footer-links" aria-label="Footer"><a href="https://github.com/suhas102">GitHub</a><a href="https://www.linkedin.com/in/suhas-suresha-b54678355/">LinkedIn</a><a href="mailto:suhasuresha8@gmail.com">Email</a></nav></div></footer>
+</body></html>
