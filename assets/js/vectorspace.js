@@ -11,12 +11,12 @@
   var reduce = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   var CL = [
-    { name: "RAG and retrieval", color: "#0969da", c: [3.1, 0.6, 0.4], q: "How do I stop a RAG system hallucinating?" },
-    { name: "LLM guardrails", color: "#cf222e", c: [-2.4, 2.0, 1.2], q: "How do I block prompt injection?" },
-    { name: "F1 telemetry", color: "#bf8700", c: [0.3, -2.6, 1.8], q: "Do telemetry signals track cognitive load?" },
-    { name: "Forecasting and KRIs", color: "#1a7f37", c: [-1.2, -0.8, -3.0], q: "Can I warn before a KPI breaches tolerance?" },
-    { name: "Drift and model risk", color: "#8250df", c: [2.0, 2.4, -2.2], q: "How do I detect a model drifting?" },
-    { name: "Resilience and impact", color: "#bf3989", c: [-3.2, -1.6, -0.6], q: "What breaks if one supplier fails?" }
+    { name: "RAG and retrieval", color: "#5b3df5", c: [3.1, 0.6, 0.4], q: "How do I stop a RAG system hallucinating?" },
+    { name: "LLM guardrails", color: "#ff6b5a", c: [-2.4, 2.0, 1.2], q: "How do I block prompt injection?" },
+    { name: "F1 telemetry", color: "#f5a524", c: [0.3, -2.6, 1.8], q: "Do telemetry signals track cognitive load?" },
+    { name: "Forecasting and KRIs", color: "#14b8a6", c: [-1.2, -0.8, -3.0], q: "Can I warn before a KPI breaches tolerance?" },
+    { name: "Drift and model risk", color: "#3b82f6", c: [2.0, 2.4, -2.2], q: "How do I detect a model drifting?" },
+    { name: "Resilience and impact", color: "#ec4899", c: [-3.2, -1.6, -0.6], q: "What breaks if one supplier fails?" }
   ];
   var PER = 170, N = CL.length * PER, K = 10;
   var seed = 7;
