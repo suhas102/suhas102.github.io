@@ -141,3 +141,39 @@ h1, h2, h3 { font-family: var(--font-display); }
   .box-body { padding: 16px; }
   .rrow { flex-direction: column; gap: 8px; padding: 16px 0; }
 }
+
+/* ---- terminal intro ---- */
+.term { border: 1px solid var(--line); border-radius: 8px; overflow: hidden; margin: 0 0 16px; background: #0d1117; color: #e6edf3; }
+.term-bar { display: flex; gap: 6px; align-items: center; padding: 8px 12px; background: #161b22; border-bottom: 1px solid #30363d; font: 12px var(--font-code); color: #9198a1; }
+.term-bar i { width: 11px; height: 11px; border-radius: 50%; background: #484f58; display: block; }
+.term-bar i:nth-child(1) { background: #ff5f56; } .term-bar i:nth-child(2) { background: #ffbd2e; } .term-bar i:nth-child(3) { background: #27c93f; }
+.term-bar span { margin-left: 8px; }
+.term-body { margin: 0; padding: 14px 16px; font: 13px/1.7 var(--font-code); white-space: pre-wrap; min-height: 11.5em; color: #e6edf3; }
+.term-body .p { color: #3fb950; } .term-body .c { color: #79c0ff; } .term-body .d { color: #9198a1; }
+.term-caret { display: inline-block; width: .55em; height: 1.1em; background: #e6edf3; vertical-align: text-bottom; animation: blink 1s steps(1) infinite; }
+@keyframes blink { 50% { opacity: 0; } }
+
+/* ---- highlights ---- */
+.ach { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 12px; margin-bottom: 24px; }
+.ach-item { text-align: center; display: flex; flex-direction: column; align-items: center; gap: 4px; }
+.ach-item b { font-size: 12px; } .ach-item span { font-size: 11px; color: var(--muted); line-height: 1.35; }
+.ach-ring { width: 72px; height: 72px; border-radius: 50%; display: grid; place-items: center; font: 700 17px var(--font-display); letter-spacing: -.02em; color: var(--ink);
+  background: radial-gradient(circle at 30% 25%, var(--surface), var(--surface-2)); border: 3px solid transparent;
+  background-image: linear-gradient(var(--surface-2), var(--surface-2)), conic-gradient(from 210deg, #0969da, #8250df, #bf3989, #fd8c73, #0969da); background-origin: border-box; background-clip: padding-box, border-box;
+  transition: transform .25s; }
+.ach-item:hover .ach-ring { transform: rotate(-8deg) scale(1.08); }
+
+/* ---- pinned mini visuals ---- */
+.pin-viz { color: var(--accent); background: var(--surface-2); border-radius: 6px; padding: 6px 8px; }
+.pin-viz svg { width: 100%; height: 44px; display: block; overflow: visible; }
+.pin:hover .pin-viz .sq { animation: pop .5s both; animation-delay: var(--d); }
+.pin:hover .pin-viz .bar { animation: grow .6s both; animation-delay: var(--d); transform-origin: bottom; transform-box: fill-box; }
+.pin:hover .pin-viz .trace { stroke-dasharray: 600; animation: draw 1.2s both; }
+.pin:hover .pin-viz .loop { stroke-dasharray: 5 4; animation: dash .6s linear infinite; }
+@keyframes pop { from { transform: scale(0); } to { transform: scale(1); } }
+.pin-viz .sq { fill: var(--pass); opacity: .85; transform-box: fill-box; transform-origin: center; }
+@keyframes grow { from { transform: scaleY(0); } }
+@keyframes draw { from { stroke-dashoffset: 600; } to { stroke-dashoffset: 0; } }
+@keyframes dash { to { stroke-dashoffset: -9; } }
+@media (max-width: 1100px) { .ach { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (prefers-reduced-motion: reduce) { .term-caret { animation: none; } .pin:hover .pin-viz * { animation: none !important; } }
